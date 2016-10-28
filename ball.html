@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		var W=1024;
+		var H=768;
+		var R=15;
+		var MGL=30;
+		var MGT=60;
+		var ball={"x":500,"y":300,"vx":-3,"vy":10,"g":2};
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+			cvs.width=W;
+			cvs.height=H;
+			
+			setInterval(function(){
+				drawBall(ctx);
+				update();
+			},60);
+
+		}
+
+		function update(){
+			ball.x+=ball.vx;
+			ball.y+=ball.vy;
+			ball.vy+=ball.g;
+
+			if(ball.y >= (768-R)){
+				ball.y=768-R;
+				ball.vy=-ball.vy*0.3;
+			}
+			if(ball.x <= R){
+				ball.x=R;
+			}
+			if(ball.x >= (1024-R)){
+				ball.x=1024-R;
+			}
+		}
+
+		function drawBall(ctx){
+			ctx.clearRect(0,0,W,H);
+			ctx.fillStyle="#abcdef";
+			ctx.beginPath();
+			ctx.arc(ball.x,ball.y,R,0,360,false);
+			ctx.fill();
+		}
+
+	</script>
+</body>
+</html>
