@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arc</title>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="400"></canvas>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById("canvas");
+			var ctx=canvas.getContext("2d");
+
+			ctx.beginPath();
+			ctx.arc(50,50,50,0,Math.PI/6,true);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.strokeStyle="#f40";
+			ctx.arc(150,50,50,0,Math.PI/6,false);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.fillStyle="#f40";
+			ctx.arc(320,50,50,0,Math.PI*2,false);
+			ctx.arc(320,50,30,0,Math.PI*2,true);
+			ctx.fill();
+
+		}
+	</script>
+</body>
+</html>
