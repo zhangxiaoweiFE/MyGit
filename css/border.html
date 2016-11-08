@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多背景模拟动态边框</title>
+	<style>
+		.bd{
+			width: 200px;
+			height: 100px;
+			background:linear-gradient(0,#058 2px,#058 2px) no-repeat,
+                       linear-gradient(90deg,#058 2px,#058 2px) no-repeat,
+                       linear-gradient(180deg,#058 2px,#058 2px) no-repeat,
+                       linear-gradient(270deg,#058 2px,#058 2px) no-repeat
+			;
+			background-size: 0 2px, 2px 0, 0 2px,2px 0;
+			background-position: top left, top right, bottom  right,bottom left;
+			transition:all 0.5s;
+			text-align:center;
+			line-height: 100px;
+			cursor:pointer;
+		}
+		.bd:hover{
+			background-size: 100% 2px, 2px 100%, 100% 2px,2px 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="bd">hover me!</div>
+</body>
+</html>
