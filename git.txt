@@ -1,0 +1,5 @@
+git add .
+ git commit -a -m "add"
+git fetch origin
+git rebase origin/master
+git push origin master

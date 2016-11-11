@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正弦函数曲线</title>
+	<style>
+		#addBall{
+			display: block;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="150"></canvas>
+	<a href="#" id="addBall">addBall</a>
+	<script>
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+			var balls=[];
+
+			drawSin();
+
+			drawBall();
+
+			document.getElementById("addBall").onclick=function(){
+				balls.push(new ball(0,30,10));
+			}
+
+			function ball(x,y,r){
+				this.x=x;
+				this.y=y;
+				this.r=r;
+				this.angle=0;
+			}
+
+
+			function drawBall(){
+				ctx.clearRect( 0 , 0 , cvs.width , cvs.height );
+				drawSin();
+
+				for(var i=0;i<balls.length;i++){
+					var ball=balls[i];
+					if(ball.x>cvs.width){
+						balls.splice(i,1);
+						i-=1;
+					}else{
+						ctx.beginPath();
+						ball.x+=1;
+						ball.y+=Math.sin(ball.angle)*3;
+						ball.angle+=0.1;
+						ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2,false);
+						ctx.fill();
+					}
+				}
+				window.requestAnimationFrame(drawBall);
+			}
+
+			function drawSin(){
+				var x=0;
+				var y=30;
+				for(var i=0;i<Math.PI*10;i+=0.1){
+					ctx.fillStyle="#000";
+					ctx.beginPath();
+					ctx.save();
+					x+=1;
+					y+=Math.sin(i)*3;
+					ctx.arc(x,y,1,0,2*Math.PI,true);
+					ctx.fill();
+				}
+			}
+		}
+	</script>
+</body>
+</html>

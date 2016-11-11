@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆周运动</title>
+	<style>
+		#addBall{
+			display: block;
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+
+	<script>
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var centerX=cvs.width/2;
+			var centerY=cvs.height/2;
+			var R=50;
+
+			drawCircle();
+
+			drawBall();
+			
+			var ball=new ball(centerX-50,centerY-50);
+
+			function ball(x,y){
+				this.x=x;
+				this.y=y;
+				this.angle=0;
+			}
+
+			function drawBall(){
+
+				ctx.clearRect(0,0,cvs.width,cvs.height);
+				drawCircle();
+
+				ctx.beginPath();
+				ctx.fillStyle="#f00";
+				ball.x=Math.sin(ball.angle)*R+centerX;
+				ball.y=Math.cos(ball.angle)*R+centerY;
+				ball.angle+=0.1;
+				ctx.arc(ball.x,ball.y,5,0,Math.PI*2,true);
+				ctx.fill();
+
+				window.requestAnimationFrame(drawBall);
+			}
+
+			function drawCircle(){
+				var x=centerX-50;
+				var y=centerY-50;
+
+				for(var i=0;i<Math.PI*2;i+=0.1){
+					ctx.beginPath();
+					x=Math.sin(i)*R+centerX;
+					y=Math.cos(i)*R+centerY;
+					ctx.fillStyle="#f00";
+					ctx.arc(x,y,1,0,2*Math.PI,true);
+					ctx.fill();
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>
