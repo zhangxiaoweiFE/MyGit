@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ellipse---椭圆</title>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+			
+			//中点
+			var centerX=cvs.width/2;
+			var centerY=cvs.height/2;
+
+			// 椭圆半径
+			var Ra=100;
+			var Rb=50;
+
+			function Ball(x,y){
+				this.x=x;
+				this.y=y;
+				this.r=5;
+				this.angle=0;
+			}
+
+			var ball=new Ball(centerX-50,centerY-50);
+
+			drawBall();
+
+			function drawBall(){
+				ctx.clearRect(0,0,cvs.width,cvs.height);
+				drawEllipse();
+
+				ctx.beginPath();
+				ball.x=centerX+Math.sin(ball.angle)*Ra;
+				ball.y=centerY+Math.cos(ball.angle)*Rb;
+				ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+				ctx.fill();
+				ball.angle+=0.1;
+
+				window.requestAnimationFrame(drawBall);
+
+			}
+
+			//绘制椭圆
+			function drawEllipse(){
+				for(var angle=0; angle<Math.PI*2;angle+=0.1){
+					ctx.beginPath();
+					var x=Math.sin(angle)*Ra+centerX;
+					var y=Math.cos(angle)*Rb+centerX;
+					ctx.arc(x,y,1,0,Math.PI*2);
+					ctx.fill();
+				}
+			}
+		}
+	</script>
+</body>
+</html>
