@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading</title>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var centerX=cvs.width/2;
+			var centerY=cvs.height/2;
+			var R=100;
+
+			var rad=Math.PI*2/100;
+			var speed=0;
+
+			drawLoading();
+
+			function drawCircle(){
+				ctx.beginPath();
+				ctx.strokeStyle="#ccc";
+				ctx.lineWidth=2;
+				ctx.arc(centerX,centerY,R,0,Math.PI*2);
+				ctx.stroke();
+			}
+
+			function drawTxt(){
+				ctx.beginPath();
+				ctx.font="40px Arial";
+				ctx.strokeStyle="#49f";
+				ctx.strokeText(speed.toFixed(0)+"%",centerX-30,centerY+10);
+				// number.toFixed(num) 四舍五入 num为小数位数  此处也可用Math.round(num)
+			}
+
+			function drawLoading(){
+				ctx.clearRect(0,0,cvs.width,cvs.height);
+				drawCircle();
+				drawTxt();
+
+				ctx.beginPath();
+				ctx.strokeStyle="#49f";
+				ctx.lineWidth=5;
+				ctx.arc(centerX,centerY,R,-Math.PI/2,-Math.PI/2+rad*speed);
+				ctx.stroke();
+
+				if(speed>100){
+					speed=0;
+				}
+				speed+=0.1;
+
+				window.requestAnimationFrame(drawLoading);
+			}
+		}
+	</script>
+</body>
+</html>
