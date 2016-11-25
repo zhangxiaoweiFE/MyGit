@@ -14,7 +14,7 @@
 			//中点
 			var centerX=cvs.width/2;
 			var centerY=cvs.height/2;
-
+			
 			// 椭圆半径
 			var Ra=100;
 			var Rb=50;
@@ -35,8 +35,8 @@
 				drawEllipse();
 
 				ctx.beginPath();
-				ball.x=centerX+Math.sin(ball.angle)*Ra;
-				ball.y=centerY+Math.cos(ball.angle)*Rb;
+				ball.x=centerX+Math.cos(ball.angle)*Ra;
+				ball.y=centerY+Math.sin(ball.angle)*Rb;
 				ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
 				ctx.fill();
 				ball.angle+=0.1;
@@ -49,8 +49,8 @@
 			function drawEllipse(){
 				for(var angle=0; angle<Math.PI*2;angle+=0.1){
 					ctx.beginPath();
-					var x=Math.sin(angle)*Ra+centerX;
-					var y=Math.cos(angle)*Rb+centerX;
+					var x=Math.cos(angle)*Ra+centerX;
+					var y=Math.sin(angle)*Rb+centerX;
 					ctx.arc(x,y,1,0,Math.PI*2);
 					ctx.fill();
 				}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>圆周运动</title>
+	<title>circle--圆周运动</title>
 	<style>
 		#addBall{
 			display: block;
@@ -42,8 +42,8 @@
 
 				ctx.beginPath();
 				ctx.fillStyle="#f00";
-				ball.x=Math.sin(ball.angle)*R+centerX;
-				ball.y=Math.cos(ball.angle)*R+centerY;
+				ball.x=Math.cos(ball.angle)*R+centerX;
+				ball.y=Math.sin(ball.angle)*R+centerY;
 				ball.angle+=0.1;
 				ctx.arc(ball.x,ball.y,5,0,Math.PI*2,true);
 				ctx.fill();
@@ -57,8 +57,8 @@
 
 				for(var i=0;i<Math.PI*2;i+=0.1){
 					ctx.beginPath();
-					x=Math.sin(i)*R+centerX;
-					y=Math.cos(i)*R+centerY;
+					x=Math.cos(i)*R+centerX;
+					y=Math.sin(i)*R+centerY;
 					ctx.fillStyle="#f00";
 					ctx.arc(x,y,1,0,2*Math.PI,true);
 					ctx.fill();
