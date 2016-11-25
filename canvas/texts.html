@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			margin: 0;
+			padding:0;
+			overflow: hidden;
+		}
+		#canvas{
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" onresize="alert(W)"></canvas>
+	<script>
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var W=cvs.width=window.innerWidth,
+				H=cvs.height=window.innerHeight;
+
+			var linearColor="rgba(0,0,0,0.1)",
+			    wordColor="#3f3",
+			    words = "0123456789qwertyuiopasdfghjklzxcvbnm,./;'\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?", 
+				wordsArr = words.split(''),
+				fontSize=16,
+				clumns = W/ fontSize,  //列数
+				dropsArr=[];
+
+			for(var i=0;i<clumns;i++){
+				dropsArr[i]=1;
+			}
+			
+			(function drawFrame(){
+				window.requestAnimationFrame(drawFrame);
+				ctx.fillStyle=linearColor;
+				ctx.fillRect(0,0,W,H);
+				draw();
+			}())
+
+			function draw(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.fillStyle=wordColor;
+				ctx.font=fontSize+"px Arial";
+
+				for(var i=0;i<dropsArr.length;i++){
+					var text=wordsArr[Math.floor(Math.random()*wordsArr.length)];
+
+					ctx.fillText(text,i*fontSize,dropsArr[i]*fontSize);
+					//i*fontSize x轴坐标  dropsArr[i]*fontSize y轴坐标
+					if(dropsArr[i]*fontSize > H && Math.random()>0.98){
+						dropsArr[i]=1;
+					}
+					dropsArr[i]++;
+				}
+
+				ctx.restore();
+			}
+		}
+
+	</script>
+</body>
+</html>
