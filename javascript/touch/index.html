@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; width: 100%;">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<title>touch事件</title>
+	<style>
+		*{margin:0;padding:0;}
+		body,.main{height:100%;width:100%;}
+		li{list-style: none;}
+		.main{background:#eee;overflow:hidden;}
+		.txt{margin-top:50%;line-height: 1.5; padding:0 10%;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="txt">
+			<ul>
+				<li>起点pageX: <span id="spageX"></span></li>
+				<li>起点pageY: <span id="spageY"></span></li>
+				<li>终点pageX: <span id="epageX"></span></li>
+				<li>终点pageY: <span id="epageY"></span></li>
+				<li>result: <span id="dir"></span></li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	window.onload=function(){
+
+		var slider=document.getElementsByClassName("main")[0];
+		var startX,startY,endX,endY,changedX,changedY;
+
+		var spageX=document.getElementById("spageX");
+		var spageY=document.getElementById("spageY");
+		var epageX=document.getElementById("epageX");
+		var epageY=document.getElementById("epageY");
+		var dir=document.getElementById("dir");
+
+		slider.addEventListener("touchstart",function(e){
+
+			e.preventDefault();
+			startX=e.touches[0].pageX;
+			startY=e.touches[0].pageY;
+
+			spageX.innerHTML=startX;
+			spageY.innerHTML=startY;
+
+		});
+
+		slider.addEventListener("touchmove",function(e){
+
+			e.preventDefault();
+			endX=e.changedTouches[0].pageX;
+			endY=e.changedTouches[0].pageY;
+
+			epageX.innerHTML=endX;
+			epageY.innerHTML=endY;
+
+		})
+
+		slider.addEventListener("touchend",function(e){
+
+			e.preventDefault();
+			changedX=endX-startX;
+			changedY=endY-startY;
+
+			var x=Math.abs(changedX);
+			var y=Math.abs(changedY);
+			var direction=x-y;
+
+			if( direction>0 && changedX<0){
+				// 向左滑
+				dir.innerHTML="向左滑";
+				
+			}else if(direction>0 && changedX>0){
+				//向右滑
+				dir.innerHTML="向右滑";
+			}
+
+			if( direction<0 && changedY<0){
+				// 向上滑
+				dir.innerHTML="向上滑";
+			}else if(direction<0 && changedY>0){
+				//向下滑
+				dir.innerHTML="向下滑";
+			}
+
+
+		});
+
+
+	}
+</script>
