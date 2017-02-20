@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		input[type="checkbox"]{
+			display:none;
+		}
+		input[type="checkbox"]+label:before{
+			display:inline-block;
+			content:"";
+			width: 20px;
+			height: 20px;
+			border:1px solid #f00;
+		}
+		input[type=checkbox]:checked + label:before {  
+		    content: "\2713";
+		    color:#f00;
+		    text-align:center;
+		    line-height: 20px;
+		}
+
+		input[type="radio"]{
+			display: none;
+		}
+		input[type="radio"]+label:before{
+			content:"";
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius:50%;
+			border:1px solid #f00;
+		}
+		input[type="radio"]:checked+label:before{
+			content:"\26AB";
+			color:#f00;
+			text-align:center;
+			line-height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<input type="checkbox" id="check" name="check" />
+	<label for="check">Checkbox</label>
+
+	<input type="radio" id="radio" name="radio" />
+	<label for="radio">Radio</label>
+</body>
+</html>

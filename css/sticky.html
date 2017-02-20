@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>Sticky</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.main{
+			width: 500px;
+			height: 250px;
+			margin:0 auto;
+			overflow: auto;
+		}
+		.sticky{
+			position: -webkit-sticky;
+			position: sticky;
+			top:0;
+		}
+		.main section{
+			margin-bottom: 20px;
+			overflow: auto;
+		}
+		.main h1{
+			height: 50px;
+			background: #f00;
+		}
+		.main p{
+			height: 200px;
+			background: #F07151;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<section>
+			<h1 class="sticky">11111111111</h1>
+			<p></p>
+		</section>
+		<section>
+			<h1 class="sticky">22222222222</h1>
+			<p></p>
+		</section>
+		<section>
+			<h1 class="sticky">3333333333</h1>
+			<p></p>
+		</section>
+		<section>
+			<h1 class="sticky">4444444444</h1>
+			<p></p>
+		</section>
+	</div>
+</body>
+</html>
