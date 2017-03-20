@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+*{margin:0;padding:0;}
+.progress{width:500px;height:30px;margin:0 auto 100px;border-radius:15px;border:1px solid #ccc;overflow:hidden;}
+.barval{display:inline-block;width:100%;height:100%;background:linear-gradient(45deg,#2C87D3,#2C87D3 33%,#74AEDC 34%,#74AEDC 66%,#2C87D3 67%);background-size:60px 30px;}
+/*.barval{animation:bar1 5s both linear infinite;}*/
+@keyframes bar1{
+	0%{width:0;}
+	100%{width:100%;}
+}
+.progress-circle{
+	width: 200px;
+	height: 200px;
+	margin:0 auto;
+	position: relative;
+	overflow: hidden;
+	font-size:0;
+}
+.circle-wp-l,.circle-wp-r{
+	position: absolute;
+	top:0;
+	width: 100px;
+	height: 200px;
+	overflow: hidden;
+}
+.circle-wp-l{
+	left:0;
+}
+.circle-wp-r{
+	right: 0;
+}
+.circle-l,.circle-r{
+	position: absolute;
+	top:0;
+	width: 160px;
+	height: 160px;
+	border-radius: 100%;
+	border:20px solid #74AEDC;
+}
+.circle-l{
+	left: 0;
+	border-top-color:#fff;
+	border-right-color: #fff;
+	transform:rotate(-135deg);
+	animation:bar-l 5s linear both infinite;
+}
+.circle-r{
+	right:1px;
+	z-index:10;
+	border-bottom-color:#fff;
+	border-left-color: #fff;
+	transform:rotate(-135deg);
+	animation:bar-r 5s linear both infinite;
+}
+@keyframes bar-l{
+	0%,50%{
+		transform: rotate(-135deg);
+	}
+	100%{
+		transform: rotate(45deg);
+	}
+}
+@keyframes bar-r{
+	0%{
+		transform: rotate(-135deg);
+	}
+	50%,100%{
+		transform: rotate(45deg);
+	}
+}
+.wp{
+	width: 200px;
+	height: 200px;
+	margin:100px auto;
+	position: relative;
+	overflow: hidden;
+}
+.track{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 160px;
+	height:160px;
+	border:20px solid #f3f3f3;
+	border-radius: 50%;
+}
+.right{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 160px;
+	height: 160px;
+	border:20px solid #74AEDC;
+	border-radius: 50%;
+	clip:rect(0px 200px 200px 100px);
+}
+.rotating,.cover{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 160px;
+	height: 160px;
+	border:20px solid #74AEDC;
+	border-radius: 50%;
+	clip:rect(0px 100px 200px 0px);
+}
+.cover{
+	border-color: #f3f3f3;
+}
+.ani{
+	animation:rot 5s linear both;
+}
+@keyframes rot{
+	0%{
+		transform:rotate(0);
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+</style>
+<body>
+	<div class="progress">
+		<span class="barval"></span>
+	</div>
+	<div class="progress-circle">
+		<div class="circle-wp-l">
+			<div class="circle-l"></div>
+		</div>
+		<div class="circle-wp-r">
+			<div class="circle-r" ></div>
+		</div>
+	</div>
+
+	<div class="wp">
+		<div class="track"></div>
+		<div class="right"></div>
+		<div class="rotating"></div>
+		<div class="cover"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var right=document.getElementsByClassName("right")[0];
+			var rotating=document.getElementsByClassName("rotating")[0];
+			var cover=document.getElementsByClassName("cover")[0];
+
+			right.style.display="none";
+
+
+
+			function play(){
+				rotating.className="rotating ani";
+				setTimeout(function(){
+					right.style.display="block";
+					cover.style.display="none";
+				},2500);
+				setTimeout(function(){
+					right.style.display="block";
+					rotating.className="rotating";
+				},5000);
+			}
+
+			play();
+			
+
+
+		}
+	</script>
+</body>
+</html>

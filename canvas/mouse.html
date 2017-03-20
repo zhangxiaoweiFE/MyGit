@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mouse</title>
+	<style>
+		*{margin:0; padding:0;}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var w=canvas.width=window.innerWidth;
+			var h=canvas.height=window.innerHeight;
+
+			var obj=[];
+			var color=["red","blue","yellow","purple"];
+			var nums=2;
+
+			cvs.onmousemove=function(ev){
+				var x=ev.clientX;
+				var y=ev.clientY;
+
+				for(var i=0;i<nums;i++){
+					var o={
+						x:Math.random()*30+x,
+						y:Math.random()*30+y,
+						r:Math.round(Math.random()*20),
+						color:color[Math.floor(Math.random()*color.length)],
+						vx:Math.random()*3-3,
+						vy:Math.random()*3-3
+					}
+
+					obj.push(o);
+					if(obj.length==100){
+						obj.shift();
+					}
+					draw(ctx,obj[i].x,obj[i].y,obj[i].r,obj[i].color);
+				}
+			}
+
+			function draw(ctx,x,y,r,color){
+				ctx.beginPath();
+				ctx.save();
+				ctx.fillStyle=color;
+				ctx.arc(x,y,r,0,360,false);
+				ctx.fill();
+				ctx.restore();
+			}
+
+
+			function update(){
+				ctx.clearRect(0,0,w,h);
+				for(var i=0;i<obj.length;i++){
+					obj[i].x+=obj[i].vx;
+					obj[i].y+=obj[i].vy;
+					
+					if(obj[i].x>w-obj[i].r){
+						obj[i].x=w-obj[i].r;
+						obj[i].vx*=-1;
+					}
+					if(obj[i].x<obj[i].r){
+						obj[i].x=obj[i].r;
+						obj[i].vx*=-1;
+					}
+					if(obj[i].y>h-obj[i].r){
+						obj[i].y=h-obj[i].r;
+						obj[i].vy*=-1;
+					}
+					if(obj[i].y<obj[i].r){
+						obj[i].y=obj[i].r;
+						obj[i].vy*=-1;
+					}
+
+					draw(ctx,obj[i].x,obj[i].y,obj[i].r,obj[i].color);
+				}
+
+				requestAnimationFrame(update);
+			}
+
+			update();
+
+		}
+	</script>
+</body>
+</html>

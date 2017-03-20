@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #333;"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var w=cvs.width=500;
+			var h=cvs.height=300;
+			var g=2;
+			var f=0.6;
+
+
+			var ball=new Ball(50,50,10,2,10);
+			updateBall()
+			
+
+			function Ball(x,y,r,vx,vy){
+				this.x=x;
+				this.y=y;
+				this.r=r;
+				this.vx=vx;
+				this.vy=vy;
+			}
+
+			function drawBall(){
+				ctx.beginPath();
+				ctx.fillStyle="#49f";
+				ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+				ctx.fill();
+			}
+
+			function updateBall(){
+				ctx.clearRect(0,0,w,h);
+				drawBall();
+
+				ball.x+=ball.vx;
+				ball.y+=ball.vy;
+				ball.vy+=g;
+
+				if(ball.x>w-ball.r){
+					ball.x=w-ball.r;
+					ball.vx=0;
+				}else if(ball.x<0){
+					ball.x=0;
+					ball.vx=0;
+				}else if(ball.y > h-ball.r-3){
+					ball.y=h-ball.r;
+					ball.vy=-ball.vy*f;
+				}
+
+				window.requestAnimationFrame(updateBall);
+			}
+		}
+	</script>
+</body>
+</html>
