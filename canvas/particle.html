@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body style="background:#000;">
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var w,h;
+			var timer;
+			var particles=[]; 
+
+            var opt={
+            	amount:50,      //数量
+            	speed:1,        //运动速度
+            	vSpeed:1,       //速度变量
+            	color:"rgb(102,217,239)",
+            	lineColor:"rgb(102,217,239)",  
+            	r:2,            //粒子半径
+            	vR:2,           //半径变量
+            	minDistance:200 //粒子之间连线的最小距离
+            }
+
+
+			init();
+
+			window.addEventListener("resize",function(){
+				resizing();
+			})
+
+			function getSize(){
+				w=cvs.width=window.innerWidth;
+				h=cvs.height=window.innerHeight;
+			}
+			function resizing(){
+				clearTimeout(timer);
+				timer=setTimeout(function(){
+					getSize();
+				},200);
+			}
+			//初始化函数
+			function init(){
+				getSize();
+				for(var i=0;i<opt.amount;i++){
+					particles.push(new Particle());
+				}
+				updating();
+			}
+
+			//更新状态
+			function updating(){
+				ctx.clearRect(0,0,w,h);
+				for(var i=0;i<particles.length;i++){
+					particles[i].update();
+					particles[i].draw();
+				}
+				linePoint(particles);
+				window.requestAnimationFrame(updating);
+			}
+
+			// 粒子对象
+			function Particle(){
+				// 初始位置
+				this.x=Math.random()*w;
+				this.y=Math.random()*h;
+
+				this.color=opt.color;
+				this.r=opt.r+opt.vR*Math.random();   //半径
+
+				this.speed=opt.speed+opt.vSpeed*Math.random();    //速度
+				this.directionAngle=Math.floor(Math.random()*360);   //运动方向
+
+				this.speedX=this.speed*Math.cos(this.directionAngle);  //x轴速度
+				this.speedY=this.speed*Math.sin(this.directionAngle);  //y轴速度
+
+				// 位置更新
+				this.update=function(){
+					this.bounded();  //边界判断
+					this.x+=this.speedX;
+					this.y+=this.speedY;
+				}
+
+				//边界判断
+				this.bounded=function(){
+					if(this.x<=0 || this.x>=w){
+						this.speedX*=-1;
+					}
+					if(this.y<=0 || this.y>=h){
+						this.speedY*=-1;
+					}
+					if(this.x<0){
+						this.x=0;
+					}
+					if(this.x>w){
+						this.x=w;
+					}
+					if(this.y<0){
+						this.y=0;
+					}
+					if(this.y>h){
+						this.y=h;
+					}
+				}
+
+				// 绘制
+				this.draw=function(){
+					ctx.beginPath();
+					ctx.fillStyle=this.color;
+					ctx.arc(this.x,this.y,this.r,0,360,false);
+					ctx.fill();
+				}
+
+			}
+
+			// 两点间距离
+			function getDistance(point1,point2){
+				return Math.sqrt(Math.pow(point1.x-point2.x,2)+Math.pow(point1.y-point2.y,2));
+			}
+			function linePoint(points){
+				for(var i=0;i<points.length;i++){
+					for(var j=i+1;j<points.length-1;j++){
+						var distance=getDistance(points[i],points[j]);
+						var opacity=1-distance/opt.minDistance;
+						// 距离小于minDistance时连线
+						if(opacity>0){
+							ctx.lineWidth = 0.5;
+							ctx.strokeStyle="rgba(102,217,239,"+opacity+")";
+							ctx.beginPath();
+							ctx.moveTo(points[i].x,points[i].y);
+							ctx.lineTo(points[j].x,points[j].y);
+							ctx.closePath();
+							ctx.stroke();
+						}
+					}
+					
+				}
+				
+			}
+
+		}
+	</script>
+</body>
+</html>
