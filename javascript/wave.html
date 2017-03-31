@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.ocean{width:500px;height:180px;margin-top:100px;position:relative;}
+		.wave{position:absolute;bottom:0;height:100%;background:#007CE4;animation:waving 2s both infinite ease-in-out;}
+		@keyframes waving{
+			0%,100%{height:100%;}
+			50%{height:120%;}
+		}
+	</style>
+</head>
+<body>
+	<div class="ocean" id="ocean1"></div>
+	<script>
+		window.onload=function(){
+			wave("ocean1",5,2,1/100);
+
+		}
+		
+		function wave(parent,width,duration,delay){
+			/**
+			 * parent 容器
+			 * width  波浪宽
+			 * duration 动画时间
+			 * delay 动画延迟
+			 */
+			var ocean=document.getElementById(parent);
+			var nums=Math.floor(ocean.clientWidth/width);
+			var frag=document.createDocumentFragment();
+
+			for(var i=0;i<nums;i++){
+				var wave=document.createElement("div");
+				wave.className="wave";
+				wave.style.width=width+"px";
+				wave.style.left=i*width+"px";
+				wave.style.animationDuration=duration+"s";
+				wave.style.animationDelay=delay*i+"s";
+
+				frag.appendChild(wave);
+			}
+
+			ocean.appendChild(frag);
+		}
+	</script>
+</body>
+</html>
