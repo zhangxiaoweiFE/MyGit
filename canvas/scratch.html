@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="200" style="border:1px solid #000;"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var w=canvas.width;
+			var h=canvas.height;
+
+			var prizes=["恭喜你，中奖了！","很遗憾，再来一次~"];
+			var priz=prizes[Math.floor(Math.random()*prizes.length)];
+
+			var flag=false;  //判断鼠标是否按下
+
+			function start(){
+				drawBg();
+				scratch();
+			}
+
+			function drawBg(){
+				// 把奖品设为canvas背景
+				ctx.font="bold 30px Arial";
+				ctx.textAlign="center";
+				ctx.textBaseline="middle";
+				ctx.fillText(priz,w/2,h/2);
+
+				var dataUrl=canvas.toDataURL();
+				cvs.style.background="url(" + dataUrl + ")";
+				ctx.clearRect(0,0,w,h);
+
+				// 定义刮奖蒙版
+				ctx.fillStyle="#ddd";
+				ctx.fillRect(0,0,w,h);
+			}
+
+			function scratch(){
+				cvs.addEventListener("mousedown",function(){
+					flag=true;
+					ctx.globalCompositeOperation='destination-out';
+				});
+
+				cvs.addEventListener("mousemove",function(e){
+					if(flag){
+						var x=e.pageX-cvs.offsetLeft;
+						var y=e.pageY-cvs.offsetTop;
+						ctx.beginPath();
+						ctx.arc(x,y,15,0,Math.PI*2,false);
+						ctx.fill();
+					}
+				});
+
+				cvs.addEventListener("mouseup",function(){
+					flag=false;
+					ctx.globalCompositeOperation='source-over';
+				});
+			}
+			
+			start();
+
+		}
+	</script>
+</body>
+</html>
