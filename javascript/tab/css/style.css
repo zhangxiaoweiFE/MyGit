@@ -1,0 +1,60 @@
+*{margin:0;padding:0;}
+ul{list-style:none;}
+a{text-decoration:none;}
+body{background:#222;font-family:"微软雅黑";font-size:14px;}
+
+.tab{
+	width: 300px;
+	margin:100px auto;
+	text-align:center;
+}
+.tab-nav{
+	height: 30px;
+}
+.tab-nav li{
+	float:left;
+	margin-right: 5px;
+	padding:0 10px;
+	border-radius: 3px 3px 0 0;
+	line-height: 30px;
+	background:#767676;
+}
+.tab-nav li a{
+	display:block;
+	color: #fff;
+}
+.tab-nav .active{
+	background:#fff;
+}
+.tab-nav .active a{
+	color:#000;
+}
+
+
+.tab-cont-wp{
+	padding:10px;
+	height: 200px;
+	background:#fff;
+	position: relative;
+}
+.tab-cont{
+	display: none;
+	position: absolute;
+	top:10px;
+	left:10px;
+	width: 280px;
+	height: 200px;
+	background:#F92659;
+}
+.tab-cont:nth-of-type(2){
+	background:#A6C628;
+}
+.tab-cont:nth-of-type(3){
+	background:#66D9EF;
+}
+.tab-cont:nth-of-type(4){
+	background:#8481FF;
+}
+.cur{
+	display: block;
+}

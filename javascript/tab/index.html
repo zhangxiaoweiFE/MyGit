@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="j-tab tab" data-config='{"triggerType":"click","effect":"fade","invoke":"1","auto":3000}'>
+		<ul class="tab-nav">
+			<li class="active"><a href="javascript:;">红色</a></li>
+			<li><a href="javascript:;">绿色</a></li>
+			<li><a href="javascript:;">蓝色</a></li>
+			<li><a href="javascript:;">紫色</a></li>
+		</ul>
+		<div class="tab-cont-wp">
+			<div class="tab-cont cur"></div>
+			<div class="tab-cont"></div>
+			<div class="tab-cont"></div>
+			<div class="tab-cont"></div>
+		</div>
+	</div>
+
+	<div class="j-tab tab" data-config='{"triggerType":"click","effect":"fade","invoke":"3","auto":3000}'>
+		<ul class="tab-nav">
+			<li class="active"><a href="javascript:;">红色</a></li>
+			<li><a href="javascript:;">绿色</a></li>
+			<li><a href="javascript:;">蓝色</a></li>
+			<li><a href="javascript:;">紫色</a></li>
+		</ul>
+		<div class="tab-cont-wp">
+			<div class="tab-cont cur"></div>
+			<div class="tab-cont"></div>
+			<div class="tab-cont"></div>
+			<div class="tab-cont"></div>
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/tab.js"></script>
+	<script>
+		$(function(){
+
+			$(".j-tab").tab();
+
+		})
+	</script>
+</body>
+</html>
