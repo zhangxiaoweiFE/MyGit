@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		.txt-wp{
+			width: 190px;
+			padding:10px;
+			background: #ddd;
+
+		}
+		.txt-wp p{
+			text-align: center;
+			margin:10px;
+		}
+		.txt-wp p>span{
+			display: inline-block;
+			text-align:left;
+			overflow:hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp:2;
+			-webkit-box-orient: vertical;
+		}
+	</style>
+</head>
+<body>
+	<div class="txt-wp">
+		<p><span>单行居中，多行距左</span></p>
+		<p><span>单行居中，多行距左,2行文字居左对齐</span></p>
+		<p><span>单行居中，多行距左,2行文字居左对齐,超过2行显示省略号</span></p>
+	</div>
+</body>
+</html>
