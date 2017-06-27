@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+
+		<style>
+			
+			#wrap div{
+				width: 60px;
+				height: 60px;
+				background: #abcdef;
+			}
+			#wrap div:hover{
+				width: 960px;
+			}
+			#linear{
+				transition:width 3s linear;
+				-webkit-transition:width 3s linear;
+				-moz-transition:width 3s linear;
+			}
+			#ease{
+				transition:width 3s ease;
+				-webkit-transition:width 3s ease;
+				-moz-transition:width 3s ease;
+			}
+			#ease-in{
+				transition:width 3s ease-in;
+				-webkit-transition:width 3s ease-in;
+				-moz-transition:width 3s ease-in;
+			}
+			#ease-out{
+				transition:width 3s ease-out;
+				-webkit-transition:width 3s ease-out;
+				-moz-transition:width 3s ease-out;
+			}
+			#ease-in-out{
+				transition:width 3s ease-in-out;
+				-webkit-transition:width 3s ease-in-out;
+				-moz-transition:width 3s ease-in-out;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<p>linear</p>
+			<div id="linear"></div>
+			<p>ease</p>
+			<div id="ease"></div>
+			<p>ease-in</p>
+			<div id="ease-in"></div>
+			<p>ease-out</p>
+			<div id="ease-out"></div>
+			<p>ease-in-out</p>
+			<div id="ease-in-out"></div>
+		</div>
+	</body>
+</html>

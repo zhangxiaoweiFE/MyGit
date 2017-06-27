@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>globalCompositeOperation</title>
+</head>
+<body>
+	<div class="wrap">
+		<p>globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有的）的图像上。</p>
+		<p>源图像 = 打算放置到画布上的绘图。</p>
+		<p>目标图像 = 已经放置在画布上的绘图。</p>
+	</div>
+	<canvas id="canvas" width="300" height="300" style="border:1px solid #333;"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var arrs=["source-over","source-atop","source-in","source-out","destination-over","destination-atop","destination-in","destination-out","lighter","copy","xor"]
+
+			var dfillStyle="red";
+			var sfillStyle="blue";
+			var w=100;
+			var h=100;
+
+
+			draw(0,0,50,50,arrs[0]);
+
+
+			function draw(dx,dy,sx,sy,globalCompositeOperation){
+				/*
+					dx,dy:目标图像起始位置
+					dx,dy:源图像起始位置
+				*/
+
+				// 绘制目标图像
+				ctx.fillStyle=dfillStyle;
+				ctx.fillRect(dx,dy,w,h);
+
+				ctx.globalCompositeOperation=globalCompositeOperation;
+				
+				// 绘制源图像
+				ctx.fillStyle=sfillStyle;
+				ctx.fillRect(sx,sy,w,h);
+
+			}
+
+		}
+	</script>	
+
+</body>
+</html>

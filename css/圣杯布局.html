@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{width:100%;height:100%;}
+		.wrap{padding:100px 220px 100px 200px;overflow:hidden;height:100%;margin:-100px 0;}
+		.fl{position:relative;float:left;height:100%;}
+		.left{margin-left:-100%;left:-200px;width:200px;background:#F3F5F7;}
+		.right{margin-left:-220px;right:-220px;width:220px;background:#F3F5F7;}
+		.main{width:100%;height:100%;background:#fff;}
+		.header,.footer{height:100px;line-height:100px;background:#000;color:#fff;text-align:center;}
+		.footer{clear:both;}
+	</style>
+</head>
+<body>
+	<div class="header"><h4>header</h4></div>
+	<div class="wrap">
+		<div class="main fl"></div>
+		<div class="left fl"></div>
+		<div class="right fl"></div>
+	</div>
+	<div class="footer"><h4>footer</h4></div>
+</body>
+</html>

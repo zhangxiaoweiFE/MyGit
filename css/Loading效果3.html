@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Loading3</title>
+	<style>
+		body{
+			background-color: #3D3D3A;
+		}
+		#loading{
+			width: 200px;
+			height: 200px;
+			border-radius: 100%;
+			border:10px solid #171814;
+			margin: 100px auto;
+			border-right-color: #9E9E9E;
+			-webkit-animation:load 1s infinite linear;
+			animation:load 1s infinite linear;
+		}
+		@-webkit-keyframes load{
+			0%{ -webkit-transform:rotate(0deg);}
+			100%{ -webkit-transform:rotate(360deg); }
+		}
+		@keyframes load{
+			0%{ transform:rotate(0deg);}
+			100%{ transform:rotate(360deg); }
+		}
+	</style>
+</head>
+<body>
+	<div id="loading"></div>
+</body>
+</html>
