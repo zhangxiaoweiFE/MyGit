@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<title>Flex</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="main">	
+			<!-- flex-direction -->
+			<div class="cont">
+				<h2>flex-direction</h2>
+				<p>Flex项目沿着主轴（Main Axis）的排列方向。row,column,row-reverse,column-reverse 4个值，默认row。</p>
+				<ul class="flex" id="flex-direction">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>	
+				<span>flex-direction：</span>
+				<select id="direction">
+					<option value="row">row</option>
+					<option value="column">column</option>
+					<option value="row-reverse">row-reverse</option>
+					<option value="column-reverse">column-reverse</option>
+				</select>
+			</div>	
+			<!-- flex-wrap -->
+			<div class="cont">
+				<h2>flex-wrap</h2>
+				<p>Flex项目在Flex容器内是否换行。wrap,nowrap,wrap-reverse 3个值，默认nowrap，Flex项目较多时会缩小Flex项目。</p>
+				<ul class="flex" id="flex-wrap">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+				</ul>	
+				<span>flex-wrap：</span>
+				<select id="wrap">
+					<option value="nowrap">nowrap</option>
+					<option value="wrap">wrap</option>
+					<option value="wrap-reverse">wrap-reverse</option>
+				</select>
+			</div>	
+			<!-- flex-flow -->
+			<div class="cont">
+				<h2>flex-flow</h2>
+				<p>flex-flow是flex-direction和flex-wrap的简写形式。flex-flow: row wrap;</p>
+			</div>	
+			<!-- justify-content -->
+			<div class="cont">
+				<h2>justify-content</h2>
+				<p>justify-content定义Flex项目在Main-axis上的对齐方式。flex-start,flex-end,center,space-between,space-around5个值，默认flex-start。</p>
+				<ul class="flex" id="justify-content">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>	
+				<span>justify-content：</span>
+				<select id="justify">
+					<option value="flex-start">flex-start</option>
+					<option value="flex-end">flex-end</option>
+					<option value="center">center</option>
+					<option value="space-between">space-between</option>
+					<option value="space-around">space-around</option>
+				</select>
+			</div>	
+			<!-- align-items -->
+			<div class="cont">
+				<h2>align-items</h2>
+				<p>align-items定义Flex项目在Cross-axis上的对齐方式。flex-start,flex-end,center,stretch,baseline 5个值，默认flex-start。</p>
+				<ul class="flex" id="align-items">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>	
+				<span>align-items：</span>
+				<select id="align">
+					<option value="flex-start">flex-start</option>
+					<option value="flex-end">flex-end</option>
+					<option value="center">center</option>
+					<option value="stretch">stretch</option>
+					<option value="baseline">baseline</option>
+				</select>
+			</div>	
+			<!-- align-content -->
+			<div class="cont">
+				<h2>align-content</h2>
+				<p>align-content定义多个Flex项目在Cross-axis上的对齐方式，类似于justify-content。flex-start,flex-end,center,stretch 4个值，默认flex-start。</p>
+				<ul class="flex" id="align-content">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+					<li>9</li>
+				</ul>	
+				<span>align-content：</span>
+				<select id="content">
+					<option value="flex-start">flex-start</option>
+					<option value="flex-end">flex-end</option>
+					<option value="center">center</option>
+					<option value="stretch">stretch</option>
+				</select>
+			</div>	
+			<!-- order -->
+			<div class="cont">
+				<h2>order</h2>
+				<p>Flex项目会根据order值进行排序，默认0，按html结构中的顺序排列。order值可以是负数。</p>
+				<ul class="flex" id="order-list">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+				<span>第二个item的order值：</span>
+				<select id="order">
+					<option value="-1">-1</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<!-- flex-grow -->
+			<div class="cont">
+				<h2>flex-grow</h2>
+				<p>Flex-grow控制Flex项目在容器有多余的空间时如何放大，值为大于0的正数。</p>
+				<ul class="flex" id="flex-grow">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+				<span>第二个item的flex-grow值：</span>
+				<select id="grow">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+				</select>
+			</div>
+			<!-- flex-shrink -->
+			<div class="cont">
+				<h2>flex-shrink</h2>
+				<p>Flex-shrink控制Flex项目在容器空间不足时是否缩小，值为大于0的正数，默认值1，可以缩小。</p>
+				<ul class="flex" id="flex-shrink">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+					<li>6</li>
+					<li>7</li>
+					<li>8</li>
+				</ul>
+				<span>flex-shrink值：</span>
+				<select id="shrink">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<!-- flex-basis -->
+			<div class="cont">
+				<h2>flex-basis</h2>
+				<p>Flex-basis控制Flex项目的大小，可取任何用于width属性的值，默认值auto，其大小根据内容改变。PS：当值为0时也需要加单位。</p>
+				<ul class="flex" id="flex-basis">
+					<li>flex-basis</li>
+				</ul>
+				<span>flex-basis值：</span>
+				<select id="basis">
+					<option value="auto">auto</option>
+					<option value="50px">50px</option>
+					<option value="500px">500px</option>
+				</select>
+			</div>
+			<!-- flex -->
+			<div class="cont">
+				<h2>flex</h2>
+				<p>flex是flex-grow,flex-shrink,flex-basis三个属性的简写形式，默认值flex:0 1 auto;</p>
+			</div>
+			<!-- align-self	 -->
+			<div class="cont">
+				<h2>align-self</h2>
+				<p>align-self单独设置某个项目的对齐方式，auto，flex-start，flex-end，center，stretch，baseline，默认auto。</p>
+				<ul class="flex" id="align-self">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+				</ul>
+				<span>align-self值：</span>
+				<select id="self">
+					<option value="auto">auto</option>
+					<option value="flex-start">flex-start</option>
+					<option value="flex-end">flex-end</option>
+					<option value="center">center</option>
+					<option value="stretch">stretch</option>
+					<option value="baseline">baseline</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>	
+
+

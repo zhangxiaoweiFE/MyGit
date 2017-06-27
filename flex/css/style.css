@@ -1,0 +1,113 @@
+/***
+ @author ----- zhangxiaowei
+ @time   ----- 2017-02
+***/
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div, dl, dt, dd, input {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input, select, textarea {
+  outline: none;
+  border: none;
+  background: #FFF;
+}
+
+body {
+  font: 12px/1.2 "Microsoft YaHei","simsun",tahoma,arial,sans-serif;
+}
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+em, i {
+  font-style: normal;
+}
+
+a, a:hover {
+  outline: none;
+  text-decoration: none;
+}
+
+.wrap {
+  width: 100%;
+  font: "Microsoft YaHei";
+  position: relative;
+}
+
+.main {
+  width: 900px;
+  margin: 0 auto;
+  color: #000;
+  font-size: 20px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.cont {
+  padding: 10px 0 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.flex {
+  display: flex;
+  margin: 10px auto;
+  background: #E8E8E9;
+}
+.flex li {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  line-height: 100px;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  font-size: 30px;
+  background: #abcdef;
+}
+
+select {
+  font-size: 20px;
+  background: #ccc;
+}
+
+#align-items {
+  height: 200px;
+}
+#align-items li {
+  height: auto;
+}
+
+#align-content {
+  height: 500px;
+  flex-wrap: wrap;
+}
+#align-content li {
+  height: auto;
+}
+
+#order-list li:nth-of-type(2), #flex-grow li:nth-of-type(2), #flex-shrink li:nth-of-type(2) {
+  color: red;
+}
+
+#flex-basis li {
+  width: auto;
+}
+
+#align-self {
+  height: 300px;
+}
+#align-self li:first-of-type {
+  color: red;
+}
