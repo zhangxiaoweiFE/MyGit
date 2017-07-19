@@ -8,12 +8,15 @@
 	<meta name="description" content="">
 	<title>active</title>
 	<style>
-		.element{width:300px;height:300px;margin:0 auto;background:#0ff;}
-		.element:active{background:#f00;}
+		body{text-align:center;font-size:30px;font-weight:bold;}
+		.element{width:300px;height:300px;margin:0 auto;color:#fff;line-height:300px;background:#0ff;}
+		.btn{display:block;width:300px;height:80px;margin:50px auto;text-decoration:none;background:#0ff;line-height:80px;color:#fff;}
+		.element:active,.btn:active{background:#f00;}
 	</style>
 </head>
 <body>
-	<div class="element"></div>
+	<div class="element">点我试试！</div>
+	<a href="javascript:;" class="btn">点我试试！</a>
 	<script>
 		document.body.addEventListener('touchstart', function () { });
 	</script>
