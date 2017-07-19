@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.wave-wp{width:200px;height:200px;margin:50px auto;background:#4CB0ED;overflow:hidden;position:relative;}
+		.wave-wp.circle{border-radius:50%;border:2px solid #4CB0ED;}
+		.wave,.wave2{position:absolute;left:-150px;bottom:20px;width:500px;height:500px;background:#fff;border-radius:45%;animation:rotating 6s linear both infinite;}
+		.wave-wp.circle .wave{bottom: 50px;}
+		.wave2{bottom:45px;border-radius:47%;opacity:0.8;animation-delay:-4s;}
+		@keyframes rotating{
+			0%{transform:rotate(0deg);}
+			100%{transform:rotate(360deg);}
+		}
+	</style>
+</head>
+<body>
+	<div class="wave-wp">
+		<div class="wave"></div>
+	</div>
+	<div class="wave-wp circle">
+		<div class="wave"></div>
+	</div>
+	<div class="wave-wp circle">
+		<div class="wave"></div>
+		<div class="wave2"></div>
+	</div>
+</body>
+</html>
