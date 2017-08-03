@@ -11,3 +11,4 @@ https://zhangxiaoweife.github.io/MyGit/canvas/scratch.html
 https://zhangxiaoweife.github.io/MyGit/canvas/sin.html
 https://zhangxiaoweife.github.io/MyGit/canvas/snow.html
 https://zhangxiaoweife.github.io/MyGit/canvas/texts.html
+https://zhangxiaoweife.github.io/MyGit/canvas/polygon.html
