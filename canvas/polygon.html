@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var centerX=cvs.width/2;  //中心点
+			var R=centerX-50;
+			var num=6;  //边数
+			var angle= Math.PI * 2/num;  //角度
+			var polygonColor = "#B8B8B8" ;
+
+			var data=[["输出",80],["推进",60],["战绩",70],["生存",50],["发育",75],["团战",90]];
+
+			ctx.strokeStyle=polygonColor;
+
+			drawPolygon();
+			linePoint();
+			drawText();
+			drawRegion();
+			drawPoint();
+
+
+			// 绘制多边形
+			function drawPolygon(){
+				ctx.save();
+				
+				for(var i=0;i<num;i++){
+					ctx.beginPath();
+					var r=R/num;  //单位半径
+					var curR=r*(i+1);  //当前半径
+
+					for(var j=0;j<num;j++){
+						var dx=centerX+Math.cos(angle*j)*curR;
+						var dy=centerX+Math.sin(angle*j)*curR;
+						ctx.lineTo(dx,dy);
+					}
+					ctx.closePath();
+					ctx.stroke();
+				}
+
+				ctx.restore();
+
+			}
+
+			// 顶点连线
+			function linePoint(){
+				ctx.save();
+
+				for(var i=0;i<num;i++){
+					ctx.beginPath();
+					var x=centerX + Math.cos(angle*i)*R;
+					var y=centerX + Math.sin(angle*i)*R;
+					ctx.moveTo(centerX,centerX);
+					ctx.lineTo(x,y);
+					ctx.stroke();
+				}
+				ctx.restore();
+
+			}
+
+			//绘制文本
+			function drawText(){
+				ctx.save();
+				var fontSize=16;
+				ctx.font=fontSize + "px Microsoft Yahei";
+				ctx.textAlign="center";
+				for(var i=0;i<num;i++){
+					var x=centerX+Math.cos(angle*i)*R;
+					var y=centerX+Math.sin(angle*i)*R;
+
+					if(angle*i<Math.PI && angle*i>0){
+						ctx.fillText(data[i][0],x,y+fontSize*3/2);
+					}else if(angle*i>Math.PI){
+						ctx.fillText(data[i][0],x,y-fontSize);
+					}else if(angle*i>=Math.PI && angle*i<Math.PI*3/2){
+						ctx.fillText(data[i][0],x-fontSize,y+fontSize/2);
+					}else{
+						ctx.fillText(data[i][0],x+fontSize,y+fontSize/2);
+					}
+					
+				}
+				ctx.restore();
+
+			}
+
+			// 绘制数据区域
+			function drawRegion(){
+				ctx.save();
+				ctx.beginPath();
+
+				for(var i=0;i<num;i++){
+					var x=centerX+Math.cos(angle*i)*R*data[i][1]/100;
+					var y=centerX+Math.sin(angle*i)*R*data[i][1]/100;
+					ctx.lineTo(x,y);
+				}
+				ctx.closePath();
+				ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+				ctx.fill();
+				ctx.restore();
+
+			}
+
+			// 绘制顶点
+			function drawPoint(){
+				ctx.save();
+				for(var i=0;i<num;i++){
+					var x=centerX+Math.cos(angle*i)*R*data[i][1]/100;
+					var y=centerX+Math.sin(angle*i)*R*data[i][1]/100;
+					ctx.beginPath();
+					ctx.arc(x,y,4,0,360,false);
+					ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+					ctx.fill();
+				}
+
+				ctx.restore();
+			}
+
+
+		}
+	</script>
+</body>
+</html>
