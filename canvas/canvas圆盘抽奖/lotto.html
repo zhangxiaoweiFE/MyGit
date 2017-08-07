@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="lottery">
+		<div class="lottery-bd" id="lotto">
+			<canvas id="canvas" width="500" height="500"></canvas>
+			<ul id="priz-list">
+				
+			</ul>
+		</div>
+		<a href="#" class="btn-start">开始</a>
+	</div>
+	<script src="js/lotto.js"></script>
+	<script>
+		window.onload=function(){
+			
+			var lotto=new Lotto({
+				lotto   : document.getElementById("lotto"),
+				canvas  : document.getElementById("canvas"),
+				ul      : document.getElementById("priz-list"),
+				amount  : 8,
+				callBack: function(index){
+					alert(index);
+					window.location.reload();
+				}
+ 			});
+
+			var start=document.getElementsByClassName("btn-start")[0];
+			
+			start.onclick=function() {
+				lotto.runTo(2);
+			}
+
+		}
+	</script>
+</body>
+</html>
+
+
+
+

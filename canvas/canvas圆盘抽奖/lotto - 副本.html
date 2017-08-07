@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="lottery">
+		<div class="lottery-bd">
+			<canvas id="canvas" width="500" height="500"></canvas>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+			</ul>
+		</div>
+		<a href="#" class="btn-start">开始</a>
+	</div>
+	<script src="js/lotto.js"></script>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var nums=8;  //扇形数量
+			var centerX=cvs.width/2;
+			var centerY=cvs.height/2;
+			var R=cvs.width/2;
+
+			var aLi=document.getElementsByTagName("li");
+
+			ctx.fillStyle="#FAF3E9";
+			ctx.strokeStyle="#8D462A";
+
+			function draw(i){
+				ctx.beginPath();
+				ctx.save();
+				ctx.translate(centerX,centerY);
+				ctx.moveTo(0,0);
+				ctx.rotate((360 / nums *i + 360/nums/2 ) * Math.PI/180);
+				ctx.arc(0, 0, R, 0,  2 * Math.PI/ nums, false);
+				ctx.fill();
+				ctx.stroke();
+				ctx.restore();
+			}
+
+			for(var i=0;i<nums;i++){
+				draw(i);
+
+			}
+
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].style.transform="rotate("+ (360/nums*i) +"deg) translate3d(0,-180px,0)";
+			}
+
+			var btn=document.getElementsByClassName("btn-start")[0];
+			var lottery=document.getElementsByClassName("lottery-bd")[0];
+
+			function lotto(i){
+				var target=360*5-360/nums*(i-1);
+				lottery.style.transform = "rotate("+ target +"deg)"; 
+			}
+
+			
+
+			btn.onclick=function() {
+				lotto(5);
+			}
+
+		}
+	</script>
+</body>
+</html>
