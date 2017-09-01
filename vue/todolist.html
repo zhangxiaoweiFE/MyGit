@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>vue.js</title>
+<script src="vue.min.js"></script>
+<style>
+	*{margin:0;padding:0;}
+	ul{list-style-type:none;}
+	input{outline:none;}
+	html{font-size:15.625vw;}
+	#app{width:100%;font-size:0.3rem;}
+	.form,.table{padding:0 5%;}
+	.form-ctrl{margin-bottom:0.2rem;}
+	.form label{display:block;margin-bottom:0.05rem;}
+	.form input,button{width:100%;height:0.5rem;font-size:0.3rem;line-height:0.5rem;text-indent:1em;box-sizing:border-box;}
+	.form input[type="submit"],.form input[type="reset"]{margin-bottom:0.1rem;}
+	.table{text-align:center;}
+	table{width:100%;border-collapse:collapse;}
+	th,td{width:25%;border:1px solid #ccc;}
+</style>
+
+</head>
+<body>
+	<div id="app">
+		<div class="form">
+			<div class="form-ctrl">
+				<label for="name">姓名：</label>
+				<input type="text" placeholder="请输入姓名" v-model="name">
+			</div>
+			<div class="form-ctrl">
+				<label for="name">年龄：</label>
+				<input type="text" placeholder="请输入年龄" v-model="age">
+			</div>
+			<div class="form-ctrl">
+				<button v-on:click="addUser">添加</button>
+			</div>
+		</div>
+		<div class="table">
+			<h3>我是标题</h3>
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>操作</th>
+				</tr>
+				<tr v-for="(item,index) in arr" >
+					<td>{{index+1}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+					<td><a href="#" v-on:click="del">{{opt}}</a></td>
+				</tr>
+			</table>
+
+			<div class="row" v-show="arr.length!=0">
+				<button v-on:click="delAll">删除所有</button>
+			</div>
+			<div class="row" v-show="arr.length==0">
+				<p>暂无数据...</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				arr:[],
+				name:"",
+				age:"",
+				opt:"删除"
+			},
+			methods:{
+				addUser:function(){
+					this.arr.push({
+						name:this.name,
+						age:this.age
+					});
+					this.name="";
+					this.age="";
+				},
+				del:function(index){
+					var r=confirm("确定删除这条信息？");
+					if(r==true){
+						this.arr.splice(index,1);
+					}
+				},
+				delAll:function(){
+					var r=confirm("确定删除全部信息？");
+					if(r==true){
+						this.arr=[];
+					}
+				}
+			}
+		})
+	</script>
+</body>
