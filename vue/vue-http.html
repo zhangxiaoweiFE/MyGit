@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>vue-http</title>
+<script src="./js/vue.min.js"></script>
+<script src="./js/vue-resource.js"></script>
+<script>
+	window.onload=function(){
+		new Vue({
+			el:"#http",
+			data:{},
+			methods:{
+				get:function(){
+					this.$http.get("get.txt").then(function(res){
+						alert("success! ---"+res.data);
+					}, function(res){
+						console.log("error! ---"+res.status);
+					})
+					// this.$http.get("get.php",{
+					// 	//向服务器传数据
+					// 	a:1,
+					// 	b:2
+					// }).then(function(res){
+					// 	alert("success! ---"+res.data);
+					// }, function(res){
+					// 	console.log("error! ---"+res.status);
+					// })
+				},
+				post:function(){
+					this.$http.post("post.php",{
+						a:1,
+						b:2
+					},{
+						emulateJSON:true
+					}).then(function(res){
+						alert(res.data);
+					},function(res){
+						alert(res.status);
+					})
+				},
+				jsonp:function(){
+					this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+						wd:"a"
+					},{
+						//callback
+						jsonp:"cb"
+					}).then(function(res){
+						alert(res.data.s);
+					},function(res){
+						alert(res.status);
+					})
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="http">
+		<button @click="get">get</button>
+		<button @click="post">post</button>
+		<button @click=jsonp>jsonp</button>
+	</div>
+</body>

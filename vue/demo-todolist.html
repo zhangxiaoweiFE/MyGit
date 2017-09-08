@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+<style>
+	li{
+		cursor:pointer;
+		line-height: 30px;
+	}
+</style>
+</head>
+<body>
+	<div id="app">
+		<h1>{{title}}</h1>
+		<input v-model="newItem" v-on:keyup.enter="addList">
+		<ul>
+			<li v-for="item in items" v-bind:class="{isActive:item.isActive}" v-on:click="toggleActive(item)">
+				{{item.text}}
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title:"this is a todo list demo",
+				items:[],
+				newItem:""
+			},
+			methods:{
+				addList:function(){
+					this.items.push({
+						text:this.newItem,
+						isActive:false
+					})
+					this.newItem="";
+				},
+				toggleActive:function(item){
+					item.isActive= !item.isActive;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
+
+

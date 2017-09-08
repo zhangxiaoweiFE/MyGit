@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="box">
+		{{a}}<br/>
+		{{b}}
+	</div>
+	<script>
+		var vm=new Vue({
+			el:"#box",
+			data:{
+				a:1
+			},
+			computed:{
+				// 这里的b是属性不是函数
+				b:function(){
+					return this.a+2;
+				}
+			}
+		})
+		document.onclick=function(){
+			vm.a+=1;
+		}
+	</script>
+</body>

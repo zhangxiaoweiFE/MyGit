@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-text="time"></p>
+		<p>{{time | Date}}</p>
+	</div>
+	<script>
+		window.onload=function(){
+			new Vue({
+				data:{
+					time:Date.now()
+				}
+			}).$mount("#app");
+		}
+
+		function toDouble(num){
+			return num<10?"0"+num:num;
+		}
+
+		Vue.filter("Date",function(input) {
+			var oDate=new Date(input);
+			return oDate.getFullYear()+"-"+toDouble( (oDate.getMonth()+1) )+"-"+toDouble( oDate.getDate() )+" "+toDouble( oDate.getHours() )+":"+toDouble( oDate.getMinutes() )+":"+ toDouble( oDate.getSeconds() );
+		});
+	</script>
+</body>
+</html>

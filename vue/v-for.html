@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+<style>
+	li{
+		cursor:pointer;
+		line-height: 30px;
+	}
+</style>
+
+</head>
+<body>
+	<div id="app">
+		<h1>{{title1}}</h1>
+		<ul>
+			<li v-for="item in arr">
+				{{item}}
+			</li>
+		</ul>
+		<hr>
+
+		<h1>{{title2}}</h1>
+		<ul>
+			<li v-for="item in json">
+				{{item}} 
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="(v,k,index) in json">
+				index:{{index}} --- key:{{k}} --- value:{{v}}
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				title1:"v-for:array",
+				arr:["html","css","javascript","vue"],
+				title2:"v-for:json",
+				json:{"a":"html","b":"css","c":"javascript"}
+			}
+		})
+	</script>
+</body>
+</html>
+
+

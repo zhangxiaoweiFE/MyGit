@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>vue-http</title>
+<style>
+	*{margin:0;padding:0;}
+	html{font-size:24px;}
+	#search{padding:20px;}
+	input{width:666px;height:38px;font-size:24px;line-height:38px;outline:none;border:1px solid #ccc;text-indent:5px;}
+	ul{width:668px;list-style:none;text-indent:5px;}
+	.cur{background:#ccc;}
+</style>
+<script src="./js/vue.min.js"></script>
+<script src="./js/vue-resource.js"></script>
+<script>
+	window.onload=function(){
+		new Vue({
+			el:"#search",
+			data:{
+				suggest:[],
+				item:"",
+				curIndex:-1
+			},
+			methods:{
+				get:function(ev){
+					// 按上下键不发送请求
+					if(ev.keyCode==38 || ev.keyCode==40){
+						return 
+					}
+
+					// 按下enter键搜索
+					if(ev.keyCode==13){
+						window.open("https://www.baidu.com/s?&wd="+this.item);
+						this.item="";
+					}
+
+					this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+						wd:this.item
+					},{
+						jsonp:"cb"
+					}).then(function(res){
+						this.suggest=res.data.s;
+					}, function(res){
+						alert(res.status);
+					})
+				},
+				changeDown:function(){
+					this.curIndex++;
+					if(this.curIndex==this.suggest.length){
+						this.curIndex=-1;
+					}
+					this.item=this.suggest[this.curIndex];
+				},changeUp:function(){
+					this.curIndex--;
+					if(this.curIndex==-2){
+						this.curIndex=this.suggest.length-1;
+					}
+					this.item=this.suggest[this.curIndex];
+				}
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="search">
+		<input type="text" v-model="item" @keyup="get($event)" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()"> 
+		<ul>
+			<li v-for="(item,index) in suggest" :class="{cur:index==curIndex}">{{item}}</li>
+		</ul>
+		<p v-show="suggest.length==0">暂无数据...</p>
+	</div>
+</body>
