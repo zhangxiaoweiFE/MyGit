@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<style>
+		*{padding:0;margin:0;}
+		li{padding:10px;font-size:24px;}
+		.cont{padding:5px 10px;border:1px dashed #333;font-size:30px;}
+		.home-page{color:#f00;}
+		.user-center{color:#abc;}
+		.router-link-active{color:#333;background:#f00;text-decoration:none;}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li><router-link to="/home"> 我是主页 </router-link></li>
+			<li><router-link to="/user"> 用户中心 </router-link></li>
+		</ul>
+		<div class="cont">
+			<router-view></router-view>
+		</div>
+	</div>
+
+	<script>	
+		//组件	
+		var Home={
+			template:`
+				<div class="home-page">
+					<h3>我是主页的内容</h3>
+				</div>
+			`
+		}
+		var User={
+			template:`
+				<div class="user-center">
+					<h3>我是用户信息</h3>
+					<ul>
+						<li><router-link to="/user/kyrie/age/24"> kyrie </router-link></li>
+						<li><router-link to="/user/kobe/age/39"> kobe </router-link></li>
+					</ul>
+
+					<div>
+						<router-view></router-view>
+					</div>
+				</div>
+			`
+		}
+
+		var Detail={
+			template:`
+				<div>
+					<p>{{ $route.params }}</p>
+				</div>
+			`
+		}
+
+		//创建路由实例并配置路由
+		const router=new VueRouter({
+			routes:[
+				{ path:"/home", component:Home },
+				{ 
+					path:"/user", 
+					component:User ,
+					children:[
+						{ path:":username/age/:age" , component:Detail }
+					]
+				},
+				{ path:"*", redirect:"/home" }
+
+			]
+		}) 
+
+		// 挂载路由
+		const app = new Vue({ router }).$mount('#app')
+
+	</script>
+</body>
+</html>

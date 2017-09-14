@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<com-a></com-a>
+		<com-b></com-b>
+		<com-c></com-c>	
+	</div>
+	<script>
+		window.onload=function(){
+			var Ev=new Vue();
+
+			var A={
+				data(){
+					return{
+						a:"AAAAA"
+					}
+				},
+				template:` 
+					<div><span>组件A<span>  ==> A的数据：{{a}} <button @click="send">发送A数据给C</button></div>
+					 `,
+				methods:{
+					send:function(){
+						Ev.$emit("msga",this.a);
+					}
+				}
+			} 
+
+			var B={
+				data(){
+					return{
+						b:"BBBBB"	
+					}
+				},
+				template:` 
+					<div><span>组件B<span>   ==>  B的数据：{{b}} <button @click="send">发送B数据给C</button></div> 
+					`, 
+				methods:{
+					send:function(){
+						Ev.$emit("msgb",this.b);
+					}
+				}
+			} 
+
+			var C={
+				data(){
+					return{
+						a:"",
+						b:""
+					}
+				},
+				template:` 
+						<div>
+							<p>组件C ==> 接收到A的数据：{{a}}</p> 
+							<p>组件C ==> 接收到B的数据：{{b}}</p>
+						</div>
+					 `,
+				mounted(){
+					// 接受A的数据
+					Ev.$on("msga",function(a){
+						this.a=a;
+					}.bind(this));
+
+					// 接受B的数据
+					Ev.$on("msgb",function(b){
+						this.b=b;
+					}.bind(this));
+				}
+			} 
+
+
+			new Vue({
+				el:"#app",
+				components:{
+					"com-a":A,
+					"com-b":B,
+					"com-c":C
+				}
+			})
+		}
+
+	</script>
+</body>
+</html>

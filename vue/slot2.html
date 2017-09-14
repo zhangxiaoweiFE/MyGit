@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<aaa>
+			<ul slot="slot-ul">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<ol slot="slot-ol">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ol>
+		</aaa>	
+	</div>
+	<template id="aaa">
+		<div>
+			<h1>我是标题</h1>
+			<slot name="slot-ol">默认</slot>
+			<p>多个slot用法</p>
+			<slot name="slot-ul"></slot>
+		</div>
+	</template>
+
+	<script>
+		new Vue({
+			el:"#app",
+			components:{
+				"aaa":{
+					template:"#aaa"
+				}
+			}
+		})
+	</script>
+</body>	

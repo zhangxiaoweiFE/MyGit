@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<aaa></aaa>
+	</div>
+
+	<template id="aaa">
+		<ul>
+			<li  v-for="item in arr">{{item}}</li>
+		</ul>
+	</template>
+
+	<script>
+		new Vue({
+			el:"#app",
+			components:{
+				"aaa":{
+					data:function(){
+						return {
+							arr:["首页","充值","退出"]
+						}
+					},
+					template:"#aaa"
+				}
+			}
+		})
+	</script>
+</body>

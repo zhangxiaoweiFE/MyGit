@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<aaa></aaa>
+	</div>
+
+	<template id="aaa">
+		<div>
+			<h1>父组件</h1>
+			<bbb :message="msg"></bbb>
+		</div>
+	</template>
+
+	<script>
+		new Vue({
+			el:"#app",
+			components:{
+				"aaa":{
+					data(){
+						return {
+							msg: "父组件消息"
+						}
+					},
+					template:"#aaa",
+					components:{
+						"bbb":{
+							props:["message"],
+							template:"<h2>子组件 ==> {{message}}</h2>"
+						}
+					}					
+				}
+			}
+		})
+	</script>
+</body>

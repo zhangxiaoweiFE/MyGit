@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<hello></hello>
+	</div>
+	<script>
+		var Hello=Vue.extend({
+			data:function(){
+				// 这里返回值必须是对象
+				return {
+					msg:"Hello vue"
+				}
+			},
+			methods:{
+				clicked:function(){
+					alert("clicked");
+				}
+			},
+			template:"<h1 @click=clicked>{{msg}}</h1>"
+		});
+
+		Vue.component("hello",Hello);
+		
+		new Vue({
+			el:"#app"
+		})
+
+	</script>
+</body>

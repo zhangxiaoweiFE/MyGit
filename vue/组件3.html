@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<hello></hello>
+	</div>
+	<script>
+		Vue.component("hello",{
+			template:"<h1>hello Vue-component</h1>"
+		});
+		
+		new Vue({
+			el:"#app"
+		})
+
+	</script>
+</body>
