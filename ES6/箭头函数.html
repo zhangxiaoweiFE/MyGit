@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// window.onload=function(){
+		// 	alert("箭头函数");
+		// }
+
+		// let add=function(a,b){
+		// 	return a+b;
+		// }
+
+		// let square=function(a){
+		// 	return a*a;
+		// }
+
+		// ES6写法
+		window.onload=()=>{
+			alert("箭头函数");
+		}
+
+		let add=(a,b)=>a+b;
+		alert(add(1,2))
+
+		let square=a=>a*a;
+		alert(square(5))
+
+	</script>
+</head>
+<body>
+	<section>
+		<ul>
+			<li>函数只有一个参数时可以省略()</li>
+			<li>函数只有一个return语句时可以省略{}</li>
+		</ul>
+	</section>
+</body>
+</html>

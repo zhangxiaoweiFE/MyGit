@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//1.收集参数
+		function show(a,b,...args){
+			alert(a);
+			alert(b);
+			alert(args)
+		}
+		show(1,2,3,4,5);
+
+		//2.展开数组
+		let arr=[1,2,3];
+		show(...arr); //等价于show(1,2,3);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// var声明的变量
+		var a=1;
+		var a=2;
+		console.log(a);  //2
+
+		if(true){
+			var b=10;
+		}
+		console.log(b);  //10
+
+		// let声明变量
+		let c=1;
+		c=2;
+		console.log(c); //2
+
+		if(true){
+			let d=10;
+		}
+		console.log(d);  //d is not defined
+
+		// const声明常量
+		const D=100;
+		D=200;
+		console.log(D); //报错
+
+	</script>
+</head>
+<body>
+	<section>
+		<p>var声明的变量</p>
+		<ol>
+			<li>可以重复声明，后声明的值覆盖前面的</li>
+			<li>无法限制修改</li>
+			<li>没有块级作用域</li>
+		</ol>
+	</section>
+
+	<section>
+		<p>let声明变量</p>
+		<ol>
+			<li>不能重复声明</li>
+			<li>可以修改</li>
+			<li>有块级作用域</li>
+		</ol>
+	</section>
+
+	<section>
+		<p>const声明常量</p>
+		<ol>
+			<li>不能重复声明</li>
+			<li>不可修改</li>
+			<li>有块级作用域</li>
+		</ol>
+	</section>
+</body>
+</html>
