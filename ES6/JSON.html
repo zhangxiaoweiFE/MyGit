@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		let json={"a":1,"b":2,"c":"abc"};
+		alert(JSON.stringify(json));
+
+		let str='{"a":1,"b":2,"c":"abc"}';
+		console.log(JSON.parse(str));
+
+		let x=1;
+		let y=2;
+		/*
+		let json2={
+			x,y,z:3,
+			show:function(){
+				alert("json方法");
+			}
+		}
+		*/
+		let json2={
+			x,y,z:3,
+			show(){
+				alert("json方法简写");
+			}
+		}
+		alert(json2.x);
+		json2.show();
+
+
+	</script>
+</head>
+<body>
+	<p>JSON.stringify(json) 把json转换成字符串</p>
+	<p>JSON.parse(str) 把str解析成json</p>
+	<p>ES6-JSON简写：</p>
+	<ul>
+		<li>key和value一样保留一个即可</li>
+		<li>方法简写: show:funcion(){...}  show(){...}</li>
+	</ul>
+</body>
+</html>

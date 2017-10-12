@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reduce</title>
+	<script>
+		let arr=[10,20,30,40,50];
+		let res=arr.reduce((temp,val,index)=>{
+			if(index!=arr.length-1){
+				return temp+val;
+			}else{
+				return (temp+val)/arr.length;
+			}
+		});
+
+		alert(res);
+	</script>
+</head>
+<body>
+	<div>
+		<p>arr=[a1,a2,a3];</p>
+		<p>arr.reduce(function(temp,val,index){});</p>
+		<p>temp:存放上一次计算结果，第一次的值为数组第一个元素值</p>
+		<p>val:当前数组元素</p>
+		<p>index:当前元素索引</p>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象</title>
+	<script>
+	/*
+		function User(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		User.prototype.showName=function(){
+			alert(this.name);
+		}
+		User.prototype.showAge=function(){
+			alert(this.age);
+		}
+		let user=new User("kyrie",24);
+		user.showName();
+		user.showAge();
+	*/
+
+		class User{
+			constructor(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			showName(){
+				alert(this.name);
+			}
+			showAge(){
+				alert(this.age);
+			}
+		}
+
+		let user=new User("kyrie",24);
+		user.showName();
+		user.showAge();
+
+	</script>
+</head>
+<body>
+	<p>class关键字,构造器和类分开了</p>
+	<p>class里面直接加方法</p>
+</body>
+</html>

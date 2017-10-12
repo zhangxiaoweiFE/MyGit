@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象-继承</title>
+	<script>
+	/*
+		function User(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		User.prototype.showName=function(){
+			alert(this.name);
+		}
+		User.prototype.showAge=function(){
+			alert(this.age);
+		}
+
+		function VipUser(name,age,level){
+			User.call(this,name,age);
+			this.level=level;
+		}
+		VipUser.prototype=new User();
+		VipUser.prototype.constructor=VipUser;
+		VipUser.prototype.showLevel=function(){
+			alert(this.level)
+		}
+
+		let user=new VipUser("kyrie",24,99);
+		user.showName();
+		user.showAge();
+		user.showLevel();
+	*/
+
+		class User{
+			constructor(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			showName(){
+				alert(this.name);
+			}
+			showAge(){
+				alert(this.age);
+			}
+		}
+
+		class VipUser extends User{
+			constructor(name,age,level){
+				super(name,age);
+				this.level=level;
+			}
+
+			showLevel(){
+				alert(this.level);
+			}
+		}
+
+		let user=new VipUser("kyrie",24,99);
+		user.showName();
+		user.showAge();
+		user.showLevel();
+
+	</script>
+</head>
+<body>
+	<p>继承：extends关键字,super()继承父类属性和方法</p>
+</body>
+</html>
