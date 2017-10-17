@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>yield传参</title>
+	<script>
+		function *show1(){
+			alert("a");  
+
+			let a=yield;
+
+			alert("b");  
+
+			alert(a);	
+		}
+
+		let gen=show1();
+		//第一个next()没法给yield传参
+		gen.next(1);   //a
+		gen.next(100);  //b  100
+
+
+
+		function *show2(){
+			alert("x");
+
+			let y=yield;
+
+			alert("y");
+			alert(y);
+		}
+		let gen2=show2();
+		gen2.next();    //x
+		gen2.next(222);	// y 222
+
+
+
+		function *show3(){
+			alert("m");
+
+			yield 100;
+
+			alert("n");
+
+			yield;
+
+			alert("end");
+			return 200;
+		}
+
+		let gen3=show3();
+
+		let res1=gen3.next();  //m
+		console.log(res1);     //{ value:100, done:false }
+
+		let res2=gen3.next();  //n
+		console.log(res2);     //{ value:undefined, done:false } 
+
+		let res3=gen3.next();  //end
+		console.log(res3);     //{ value:200, done:true } 最后一步的value值取决于return值
+	</script>
+</head>
+<body>
+	<ul>
+		<li>yield传参</li>
+		<li>yield返回</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		//Promise用法
+		let  p=new Promise(function(resolve,reject){
+			// resolve--成功
+			
+			// reject--失败
+		});
+
+
+		Promise.all([
+			$.ajax({url:"url1",dataType:"json"}),
+			$.ajax({url:"url2",dataType:"json"}),
+			$.ajax({url:"url3",dataType:"json"})
+		]).then(res=>{
+			let [res1,res2,res3]=res;
+			console.log(res1,res2,res3);
+		},err=>{
+			alert("失败了")
+		});
+	</script>
+</head>
+<body>
+	<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+	<p>Promise.all()</p>
+	<p>Promise.race()</p>
+</body>
+</html>

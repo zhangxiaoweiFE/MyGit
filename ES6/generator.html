@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generator</title>
+	<script>
+		function *show(){
+
+			alert("a");
+
+			yield;
+
+			alert("b");
+
+			yield;
+
+			alert("c");
+
+		}
+
+		let genObj=show();
+		// console.log(show());
+		console.log(genObj);
+
+		genObj.next();
+		genObj.next();
+		genObj.next();
+
+	</script>
+</head>
+<body>
+	<h3>generator</h3>
+	<ul>
+		<li>写法：函数名前加*</li>
+		<li>需要暂停的地方使用 yield</li>
+		<li>返回一个generator对象，直接通过函数名调用将不能直接运行里面的代码;通过next()来执行里面的代码</li>
+	</ul>
+</body>
+</html>
