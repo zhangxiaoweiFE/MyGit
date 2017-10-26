@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let obj1={name:"user"};
+		let obj2={age:12};
+		let obj3={sex:"男"};
+
+		let obj={};
+		Object.assign(obj,obj1,obj2,obj3);
+		console.log(obj);       //{name:"user",age:12,sex:"男"}
+
+	</script>
+</body>
+</html>

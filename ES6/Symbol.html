@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		let str1=Symbol();
+		let str2=Symbol();
+		console.log(typeof(str1));  //symbol
+		console.log(str1===str2);  //false
+
+
+		let str3=Symbol("a");
+		let str4=Symbol("a");
+		console.log(str3);  //Symbol(a)
+		console.log(str4);  //Symbol(a)
+		console.log(str1===str2);  //false
+
+		const obj={}
+		obj[Symbol("a")]="aaa";
+		obj[Symbol("a")]="bbb";
+		console.log(obj);  //{Symbol(a): "aaa", Symbol(a): "bbb"}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//创建一个集合,没有重复数据
+		let set=new Set([1,2,3,1,2,3]);
+		console.log(set);  //{1,2,3}
+
+		// size属性
+		console.log(set.size);  //3
+
+		// 方法
+		// 1.add()
+		set.add(4).add(5);
+		console.log(set);  //{1,2,3,4,5}
+
+		// 2.delete()
+		set.delete(2);
+		console.log(set); //{1,3,4,5}
+
+		// 3.has()
+		console.log(set.has(1));  //true
+		console.log(set.has(2));  //false
+
+		console.log(set.keys());  //{1,3,4,5}
+		console.log(set.values());  //{1,3,4,5}
+
+		// 4.clear()
+		set.clear();
+		console.log(set);  //{}
+		
+	</script>
+</body>
+</html>

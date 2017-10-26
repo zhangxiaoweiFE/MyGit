@@ -9,6 +9,9 @@
 		alert(str.startsWith("e"));  //false
 		alert(str.endsWith("world"));	 //true	
 
+		alert(str.includes("llo"));   //true
+		alert(str.repeat(2));         //hello worldhello world
+
 		// 模板字符串``
 		let template=`
 			<div class="home">
@@ -20,7 +23,8 @@
 </head>
 <body>
 	<h3>ES6字符串方法</h3>
-	<p>startsWith endsWith 返回布尔值</p>
+	<p>startsWith endsWith  includes返回布尔值</p>
+	<p>str.repeat(n)字符串重复n次</p>
 	<p>模板字符串``:字符串连接</p>
 </body>
 </html>

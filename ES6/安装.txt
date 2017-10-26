@@ -1,0 +1,11 @@
+1.安装ES6的编译器
+cnpm install --global babel
+
+2.使用ES6模块加载器语法
+cnpm install -g browserify
+
+3.切换到项目目录
+cd path/to/my/project
+
+4.ES6转换为ES5语法
+babel src --out-dir build
