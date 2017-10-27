@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vue.js</title>
+<script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<Parent></Parent>	
+	</div>
+
+	<template id="btn">
+		<span>
+			<button @click="clicked">点击了{{count}}次</button>
+		</span>
+	</template>
+
+	<template id="parent">
+		<div>
+			<Btn @clicked="getall"></Btn>
+			<Btn @clicked="getall"></Btn>
+			<Btn @clicked="getall"></Btn>
+			<p>一共点击了{{msg}}次</p>
+		</div>
+	</template>
+
+	<script>
+		new Vue({
+			el:"#app",
+			components:{
+				"Parent":{
+					data(){
+						return {
+							msg:0
+						}
+					},
+					methods:{
+						getall(){
+							this.msg+=1;
+						}
+					},
+					template:"#parent",
+					components:{
+						"Btn":{
+							template:"#btn",
+							data(){
+								return {
+									count:0
+								}
+							},
+							methods:{
+								clicked(){
+									this.count+=1;
+									this.$emit("clicked");
+								}
+							}
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>

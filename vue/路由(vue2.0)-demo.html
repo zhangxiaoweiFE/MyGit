@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/vue.min.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<style>
+		*{padding:0;margin:0;}
+		.router-link-active{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="tab">
+			<router-link to="/myhtml">HTML</router-link>
+			<router-link to="/mycss">CSS</router-link>
+			<router-link to="/myjs">JavaScript</router-link>	
+		</div>
+		<div class="tab-cont">
+			<router-view></router-view>
+		</div>
+	</div>
+
+	<template id="myhtml">
+		<div>
+			<h1>HTML</h1>
+			<p>HTML 是用来描述网页的一种语言。</p>
+		</div>
+	</template>
+
+	<template id="mycss">
+		<div>
+			<h1>CSS</h1>
+			<p>CSS 指层叠样式表 (Cascading Style Sheets)</p>
+		</div>
+	</template>
+
+	<template id="myjs">
+		<div>
+			<h1>JavaScript</h1>
+			<p>JavaScript 是世界上最流行的编程语言。</p>
+		</div>
+	</template>
+
+	<script>	
+		let myhtml=Vue.extend({
+			template:"#myhtml"
+		});
+		let mycss=Vue.extend({
+			template:"#mycss"
+		});
+		let myjs=Vue.extend({
+			template:"#myjs"
+		});
+
+		const routes=[
+			{path:"/myhtml",component:myhtml},
+			{path:"/mycss",component:mycss},
+			{path:"/myjs",component:myjs},
+			{path:"*",redirect:"/myhtml"}
+		]
+
+		const router=new VueRouter({ 
+			routes
+		});
+
+		new Vue({
+			router
+		}).$mount("#app");
+
+	</script>
+</body>
+</html>

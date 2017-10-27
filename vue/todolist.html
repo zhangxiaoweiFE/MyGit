@@ -74,6 +74,10 @@
 			},
 			methods:{
 				addUser:function(){
+					if(this.name=="" || this.age==""){
+						alert("请输入数据");
+						return; 
+					}
 					this.arr.push({
 						name:this.name,
 						age:this.age
