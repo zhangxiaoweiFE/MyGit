@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script>
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var grd=ctx.createLinearGradient(0,0,0,600);
+			grd.addColorStop(0,"#000");
+			grd.addColorStop(1,"#035");
+			ctx.fillStyle=grd;
+			ctx.fillRect(0,0,cvs.width,cvs.height);
+
+			drawLand(ctx);
+
+			for(var i=0;i<50;i++){
+				var r=Math.random()*6;
+				var x=Math.random()*800;
+				var y=Math.random()*600*0.6;
+				var rot=Math.floor(Math.random()*90);
+
+				drawStar(ctx,r,2*r,x,y,rot);
+
+			}
+
+
+			drawMoon(ctx,100,500,50,800,150,500,250,"#F0C854");
+
+			
+		}
+
+		function drawStar(ctx,r,R,x,y,rot){
+			ctx.save();
+			ctx.beginPath();
+			for(var i=0;i<5;i++){
+				ctx.lineTo( Math.cos( (18+72*i-rot)/180*Math.PI )*R+x, -Math.sin( (18+72*i-rot)/180*Math.PI )*R+y);
+				ctx.lineTo( Math.cos( (54+72*i-rot)/180*Math.PI )*r+x, -Math.sin( (54+72*i-rot)/180*Math.PI )*r+y);
+			}
+			ctx.closePath();
+			ctx.fillStyle="yellow";
+			ctx.fill();
+			ctx.restore();
+		}
+
+
+		function drawMoon(ctx,r,x1,y1,x2,y2,x3,y3,fillCol){
+			ctx.save();
+			ctx.beginPath();
+			ctx.arc(x1,y1+r,r,Math.PI/2,Math.PI*3/2,true);
+			ctx.lineTo(x1,y1);
+			ctx.arcTo(x2,y2,x3,y3, (y2-y1)*getR(x2,y2,x3,y3)/(x2-x1) );
+			ctx.closePath();
+			ctx.fillStyle=fillCol;
+			ctx.fill();
+			ctx.restore();
+		}
+
+		function getR(x1,y1,x2,y2){
+			return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+		}
+
+
+		function drawLand(ctx){
+			ctx.save();
+			ctx.moveTo(0,500);
+			ctx.bezierCurveTo(270, 305, 300 , 600, 800, 500);
+			ctx.lineTo(800,600);
+			ctx.lineTo(0,600);
+			ctx.closePath();
+
+			var landCol=ctx.createLinearGradient(0,800,0,0);
+			landCol.addColorStop(0,"#030");
+			landCol.addColorStop(1,"#580");
+			ctx.fillStyle=landCol;
+			ctx.fill();
+			
+			ctx.restore();
+		}
+
+
+	</script>
+</body>
+</html>

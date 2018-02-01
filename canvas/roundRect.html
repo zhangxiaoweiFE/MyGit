@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="600"></canvas>
+	<script>
+		window.onload=function(){
+
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			drawRoundRect(ctx,50,50,400,300,50);
+
+		}
+
+		function drawRoundRect(ctx,x,y,w,h,r){
+			ctx.save();
+			ctx.translate(x,y);
+			roundRect(ctx,w,h,r);
+			ctx.restore();
+		}
+
+		function roundRect(ctx,w,h,r){
+			ctx.beginPath();
+			ctx.arc(w-r,h-r,r,0,Math.PI/2);
+			ctx.lineTo(r,h);
+			ctx.arc(r,h-r,r,Math.PI/2,Math.PI);
+			ctx.lineTo(0,r);
+			ctx.arc(r,r,r,Math.PI,Math.PI*3/2);
+			ctx.lineTo(r,0);
+			ctx.arc(w-r,r,r,Math.PI*3/2,Math.PI*2);
+			ctx.closePath();
+			ctx.stroke();
+		}
+
+	</script>
+</body>
+</html>
+

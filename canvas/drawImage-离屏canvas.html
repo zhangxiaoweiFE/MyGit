@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="canvas" style="display: block; margin:0 auto; border:1px solid #aaa;"></canvas>
+	<input id="scaleVal" type="range" min="0.5" max="2" step="0.01" value="1" style="display:block; width: 352px; margin:50px auto;">
+	<canvas id="canvas2" width="150" height="30" style="display: block; margin:0 auto; "></canvas>
+	<script>
+		var cvs=document.getElementById("canvas");
+		var ctx=cvs.getContext("2d");
+		var img=new Image();
+		var slider=document.getElementById("scaleVal");
+
+		var canvas2=document.getElementById("canvas2");
+		var ctx2=canvas2.getContext("2d");
+		var text="== 66666 ==";
+
+		
+		window.onload=function(){
+			cvs.width=352;
+			cvs.height=220;
+			
+			img.src="img/kb.jpg";
+			var scaleVal=slider.value;
+
+			img.onload=function(e){
+				// --------drawImage（image，dx，dy）
+				// ctx.drawImage(img,0,0);	
+
+				// ---------drawImage（image，dx，dy，dw，dh）
+				// ctx.drawImage(img,0,0,100,100);	
+
+				// --------------drawImage（image，sx，sy，sw，sh，dx，dy，dw，dh）
+				// ctx.drawImage(img,0,0,200,100,0,0,100,100);	
+
+				drawImageByscale(scaleVal);
+
+				slider.onmousemove=function(){
+					scaleVal=slider.value;
+					drawImageByscale(scaleVal);
+				}
+
+			}	
+
+
+
+			ctx2.fillStyle='rgba(255,255,255,0.5)';
+			ctx2.font='20px Palatino';
+			ctx2.fillText(text,15,25);
+
+
+		}
+
+		function drawImageByscale(scaleVal){
+			var imgW = 352 * scaleVal;
+			var imgH = 220 * scaleVal;
+			var dx= cvs.width/2 - imgW/2;
+			var dy= cvs.height/2 - imgH/2;
+
+			ctx.clearRect(0,0,cvs.width,cvs.height);
+			ctx.drawImage(img , dx , dy , imgW , imgH);
+			ctx.drawImage(canvas2 , cvs.width - 150, cvs.height- 30);
+		}
+
+
+
+	</script>
+</body>
+</html>

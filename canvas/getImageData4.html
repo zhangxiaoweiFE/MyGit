@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>反色滤镜</title>
+</head>
+<body>
+	<canvas id="canvas" style="display: block; margin:0 auto 100px; border:1px solid #aaa;"></canvas>
+	<canvas id="canvasb" style="display: block; margin:0 auto; border:1px solid #aaa;"></canvas>
+	<script>
+		var cvs=document.getElementById("canvas");
+		var ctx=cvs.getContext("2d");
+		var img=new Image();
+
+		var cvsb=document.getElementById("canvasb");
+		var ctxb=cvsb.getContext("2d");
+		
+		window.onload=function(){
+			cvs.width=cvsb.width=352;
+			cvs.height=cvsb.height=220;
+			
+			img.src="img/kb.jpg";
+
+
+			img.onload=function(e){
+
+				ctx.drawImage(img,0,0,cvs.width,cvs.height);
+				filter();
+			}	
+
+			function filter(){
+
+				var imageData=ctx.getImageData(0,0,cvs.width,cvs.height);
+				
+				var data = imageData.data;
+
+				for( var i=0;i<cvsb.width*cvsb.height;i++){
+
+					var r= data[4*i+0];
+					var g= data[4*i+1];
+					var b= data[4*i+2];
+
+
+					data[4*i+0]=255-r;
+					data[4*i+1]=255-g;
+					data[4*i+2]=255-b;
+
+				}
+
+				ctxb.putImageData(imageData,0,0,0,0,cvsb.width,cvsb.height);
+			}
+
+		}
+
+
+
+	</script>
+</body>
+</html>

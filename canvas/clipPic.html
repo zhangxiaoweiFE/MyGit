@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body { background:#666; }
+        #box{position:absolute;top:100px;left:200px;width:352px;height:220px;}
+        #box img{position:absolute;top:0;left:0;}
+        .img1{opacity:0.7;}
+        .img2{clip:rect(50px,200px,150px,100px);}
+        .clip{position:absolute;top:50px;left:100px;width:100px;height:100px;border:1px solid #fff;cursor:move;}
+        .rect{position:absolute;width:6px;height:6px;background:#fff;}
+        .left-top{left:-3px;top:-3px;cursor:nw-resize;}
+        .center-top{top:-3px;left:50%;margin-left:-3px;cursor:n-resize;}
+        .right-top{top:-3px;right:-3px;cursor:ne-resize;}
+        .right-center{right:-3px;top:50%;margin-top:-3px;cursor:w-resize;}
+        .right-bottom{right:-3px;bottom:-3px;cursor:se-resize;}
+        .center-bottom{bottom:-3px;left:50%;margin-left:-3px;cursor:s-resize;}
+        .left-bottom{left:-3px;bottom:-3px;cursor:sw-resize;}
+        .left-center{left:-3px;top:50%;margin-top:-3px;cursor:w-resize;}
+        #preview{position:absolute;top:100px;left:560px;width:352px;height:220px;}
+        .img3{position:absolute;top:0;left:0;}
+    </style>
+
+</head>
+<body>
+    <div id="box">
+        <img src="img/kb.jpg" class="img1" alt="">
+        <img src="img/kb.jpg" class="img2" alt="">
+        <div class="clip">
+            <a href="#" class="rect left-top"></a>
+            <a href="#" class="rect center-top"></a>
+            <a href="#" class="rect right-top"></a>
+            <a href="#" class="rect right-center"></a>
+            <a href="#" class="rect right-bottom"></a>
+            <a href="#" class="rect center-bottom"></a>
+            <a href="#" class="rect left-bottom"></a>
+            <a href="#" class="rect left-center"></a>
+        </div>
+    </div>
+    <div id="preview">
+        <img src="img/kb.jpg" class="img3" alt="">
+    </div>
+
+    <script src="js/jquery-1.8.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript"> 
+        window.onload=function(){
+            document.onselectstart=new Function('event.returnValue=false;');
+            $( ".clip" ).draggable({ containment: 'parent' ,drag: updateClip,stop: updateClip});
+            var box=document.getElementById("box");
+            var clip=document.getElementsByClassName("clip")[0];
+            var rightCenter=document.getElementsByClassName("right-center")[0];
+            var topCenter=document.getElementsByClassName("center-top")[0];
+            var leftCenter=document.getElementsByClassName("left-center")[0];
+            var bottomCenter=document.getElementsByClassName("center-bottom")[0];
+
+            var leftTop=document.getElementsByClassName("left-top")[0];
+            var leftBottom=document.getElementsByClassName("left-bottom")[0];
+            var rightTop=document.getElementsByClassName("right-top")[0];
+            var rightBottom=document.getElementsByClassName("right-bottom")[0];
+
+            var img=document.getElementsByClassName("img2")[0];
+            var contact=""; //按下的触点
+
+            var isMouseDown=false;
+
+            rightCenter.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="rightCenter";
+            }
+            topCenter.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="topCenter";
+            }
+            leftCenter.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="leftCenter";
+            }
+            bottomCenter.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="bottomCenter";
+            }
+
+            leftTop.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="leftTop";
+            }
+            leftBottom.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="leftBottom";
+            }
+            rightTop.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="rightTop";
+            }
+            rightBottom.onmousedown=function(e){
+                e.stopPropagation();
+                isMouseDown=true;
+                contact="rightBottom";
+            }
+
+            window.onmouseup=function(){
+                isMouseDown=false;
+            }
+
+            preview();
+            window.onmousemove=function(e){
+               if(isMouseDown){
+                    var x=e.clientX;
+                    var oriWidth= clip.offsetWidth - 2;
+                    var addWidth= 0;
+                    var y=e.clientY;
+                    var oriHeight= clip.offsetHeight - 2;
+                    var addHeight= 0;
+
+                    if(contact == "rightCenter"){
+                        moveRight(e);
+
+                    }else if(contact == "leftCenter"){
+                        moveLeft(e);
+
+                    }else if(contact == "topCenter"){
+                        moveUp(e);
+                        
+                    }else if(contact == "bottomCenter"){
+                        moveDown(e);
+                    }else if(contact == "leftTop"){
+                        moveUp(e);
+                        moveLeft(e);
+                    }else if(contact == "leftBottom"){
+                        moveDown(e);
+                        moveLeft(e);
+                    }else if(contact == "rightTop"){
+                        moveUp(e);
+                        moveRight(e);
+                    }else if(contact == "rightBottom"){
+                        moveDown(e);
+                        moveRight(e);
+                    }
+
+                   updateClip();
+
+               }
+            }
+
+
+            function moveRight(e){
+                var x=e.clientX;
+                if(x > getPosition(box).left + box.offsetWidth){
+                    x = getPosition(box).left + box.offsetWidth;
+                }
+                var oriWidth= clip.offsetWidth - 2;
+                var addWidth= 0;
+                addWidth= x - getPosition(clip).left -oriWidth;
+                clip.style.width=addWidth + oriWidth +"px";
+            }
+
+            function moveLeft(e){
+                var x=e.clientX;
+                if(x < getPosition(box).left){
+                    x = getPosition(box).left;
+                }
+                var oriWidth= clip.offsetWidth - 2;
+                var addWidth= 0;
+                addWidth= getPosition(clip).left - x;
+                clip.style.left =clip.offsetLeft - addWidth +"px";
+                clip.style.width=addWidth + oriWidth +"px";
+            }
+
+            function moveUp(e){
+                var y=e.clientY;
+                if(y< getPosition(box).top){
+                    y = getPosition(box).top;
+                }
+                var oriHeight= clip.offsetHeight - 2;
+                var addHeight= 0;
+                addHeight= getPosition(clip).top - y;
+                clip.style.top =clip.offsetTop - addHeight +"px";
+                clip.style.height=addHeight + oriHeight +"px";
+            }
+
+
+            function moveDown(e){
+                var y=e.clientY;
+                if(y > getPosition(box).top + box.offsetHeight){
+                    y = getPosition(box).top + box.offsetHeight;
+                }
+                var oriHeight= clip.offsetHeight - 2;
+                var addHeight= 0;
+                addHeight=y - getPosition(clip).top - oriHeight;
+                clip.style.height=addHeight + oriHeight +"px";
+            }
+
+
+            function updateClip(){
+                var top=clip.offsetTop;
+                var left=clip.offsetLeft;
+                var right=clip.offsetLeft+clip.offsetWidth;
+                var bottom=clip.offsetTop+clip.offsetHeight;
+                img.style.clip="rect("+top+"px,"+right+"px,"+bottom+"px,"+left+"px"+")";
+                preview({"top":top,"right":right,"bottom":bottom,"left":left});
+            }
+
+
+            function preview(){
+                var top=clip.offsetTop;
+                var left=clip.offsetLeft;
+                var right=clip.offsetLeft+clip.offsetWidth;
+                var bottom=clip.offsetTop+clip.offsetHeight;
+                var img=document.getElementsByClassName("img3")[0];
+                img.style.top=-top+"px";
+                img.style.left=-left+"px";
+                img.style.clip="rect("+top+"px,"+right+"px,"+bottom+"px,"+left+"px"+")";
+            }
+
+
+        }
+
+        
+
+
+        function getPosition(node){
+            var left=node.offsetLeft;
+            var top=node.offsetTop;
+
+            var parent=node.offsetParent;
+            if(parent!=null){
+                left +=parent.offsetLeft;
+                top +=parent.offsetTop;
+                parent=parent.offsetParent;
+            }
+
+            return {"left":left,"top":top};
+
+        }
+    </script>
+</body>
+</html> 

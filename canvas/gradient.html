@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>gradient</title>
+	<style>
+	    .btn{
+	        display:inline-block;
+	        width:80px;
+	        height: 40px;
+	        background: #ccc;
+	        color: #00f;
+	        text-align: center;
+	        line-height: 40px;
+	        text-decoration: none;
+	    }
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="150"></canvas>
+	<a href="#" id="btn-linear" class="btn">linear</a>
+	<a href="#" id="btn-radial" class="btn">radial</a>
+	<script>
+		window.onload=function(){
+			var canvas=document.getElementById("canvas");
+			var ctx=canvas.getContext("2d");
+			var linear=document.getElementById("btn-linear");
+			var radial=document.getElementById("btn-radial");
+
+			linear.onclick=function(){
+				linearGradient(ctx);
+			}
+
+			radial.onclick=function(){
+				radialGradient(ctx);
+			}
+		}
+		function linearGradient(ctx){
+			var gradient=ctx.createLinearGradient(10,10,110,10);
+			gradient.addColorStop(0,"#f00");
+			gradient.addColorStop(1,"#00f");
+			ctx.fillStyle=gradient;
+			ctx.fillRect(10,10,100,80);
+		}
+		function radialGradient(ctx){
+			var radial=ctx.createRadialGradient(200,90,20,200,10,50);
+			radial.addColorStop(0,"#f00");
+			radial.addColorStop(1,"#00f");
+			ctx.fillStyle=radial;
+			ctx.fillRect(150,10,100,80);
+		}
+	</script>
+
+</body>
+</html>

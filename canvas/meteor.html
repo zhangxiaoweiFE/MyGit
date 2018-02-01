@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		html,body{width:100%;height:100%;overflow:hidden;}
+		canvas{background:rgba(0,0,0,0.8);}
+	</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload=function(){
+			var cvs=document.getElementById("canvas");
+			var ctx=cvs.getContext("2d");
+
+			var w=cvs.width=window.innerWidth;
+			var h=cvs.height=window.innerHeight;
+
+			var balls=[];
+			var simg1=new Image();
+			simg1.src="./star_3.png";
+			snow();
+			
+			function snow(){
+
+				var ball={
+					x:Math.random()*canvas.width,
+					y:0,
+					vx:Math.random()-5,
+					vy:Math.random()+10
+				}
+				
+				balls.push(ball); 
+				updateBall();
+			}
+
+			setInterval(function(){
+				snow();
+			},30);
+
+			function drawBall(ball){
+				ctx.save();
+				ctx.beginPath();
+				ctx.fillStyle=ctx.drawImage(simg1,0,0,176,176,ball.x,ball.y,176,176);
+				ctx.fill();
+				ctx.restore();
+			}
+
+			function updateBall(){
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				for(var i=0;i<balls.length;i++){
+
+					// balls[i].x+=balls[i].vx*2;
+					// balls[i].y+=balls[i].vy;	
+					balls[i].x-=25.5;
+					balls[i].y+=15;	
+
+					balls[i].index=i;
+
+					if(balls[i].y>h){
+						balls.splice(balls[i].index,1);
+						continue;
+					}
+					drawBall(balls[i]);
+				}
+			}
+		}
+	</script>
+</body>
+</html>
