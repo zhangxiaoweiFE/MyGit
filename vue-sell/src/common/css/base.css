@@ -1,0 +1,49 @@
+html,body{
+	font-family: "PingFang SC";
+	line-height: 1;
+}
+
+.clearfix{
+	display: inline-block;
+}
+.clearfix:after{
+	content:"";
+	display: block;
+	height: 0;
+	visibility: hidden;	
+	clear:both;
+}
+
+@media (min-device-pixel-ratio:1.5){
+	.border-1px:after{
+		transform:scaleY(0.7);
+	}
+}
+@media (min-device-pixel-ratio:2){
+	.border-1px:after{
+		transform:scaleY(0.5);
+	}
+}
+
+/*.icon-keyboard_arrow_right:before{
+	content: "\e902";
+}
+.icon-shopping_cart:before{
+	content:"\e903";
+}
+.icon-favorite:before{
+	content:"\e904";
+}
+
+.icon-check_circle:before{
+	content:"\e905";
+}
+.icon-close:before{
+	content:"\e906";
+}
+.icon-remove_circle_outline:before{
+	content:"\e907";
+}
+.icon-add_circle:before{
+	content:"\e908";
+}*/
