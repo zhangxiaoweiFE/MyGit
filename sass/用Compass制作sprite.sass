@@ -1,0 +1,196 @@
+6.3 用Compass制作精灵
+ 6.3.1 创建一个精灵地图
+
+1 @import "compass/utilities/sprites";    // 精灵图片控件;
+2 @import "Icon/*.png";                   // Icon文件夹位于images文件夹内并包含所有精灵图片;
+3 
+4 // 生成精灵图片位于images文件夹内;并生成编译后的CSS;
+5 CSS:
+6     .Icon-sprite {　　　　　　　　　　　　 // 自动生成的类命名; 
+7       background-image: url('/images/Icon-s040daee5af.png');
+8       background-repeat: no-repeat;
+9     }
+
+6.3.2 引入精灵并生成CSS
+
+ 1 1.all-sprites精灵混合器 
+ 2 Sass:
+ 3     @include all-Icon-sprites;          // 为整个精灵地图撰写所有必要的CSS;
+ 4 CSS:　　　　　　　　　　　　　　　　　　　　 // 生成内容;
+ 5     .Icon-sprite, .Icon-index1, .Icon-index2, .Icon-index3, .Icon-index4, .Icon-index5 {
+ 6         background-image: url('/images/Icon-s040daee5af.png');　　// 所有的相关类都引用此图片;
+ 7         background-repeat: no-repeat;
+ 8     }
+ 9     .Icon-index1 {
+10         background-position: 0 0;
+11     }
+12     ...
+13     .Icon-index5 {
+14         background-position: 0 -560px;
+15     }
+16 
+17 // 使用@extend继承精灵的样式
+18 Sass:
+19     .add-button { @extend .Icon-index1} // 这种方法会生成更少的CSS;
+20 CSS:
+21     .Icon-index1, .add-button {　　　　  // 直接叠加了一个类,比较方便;
+22         background-position: 0 0;
+23     }
+
+ 1 2.single-sprite精灵混合器
+ 2 Icon-sprite($name);                     // 输出一个独立命名精灵的CSS;  $name:单独图片的名字(index1);
+ 3 Sass:
+ 4     .add-button2 {
+ 5         @include Icon-sprite(index5);
+ 6     }
+ 7 CSS:
+ 8     .add-button2 {
+ 9         background-position: 0 -560px;  // 与index5对应的图片的位置; 
+10     }
+
+ 
+6.4 配置Compass精灵
+ 6.4.1 自定义精灵地图
+
+ // 可以自定义一个精灵地图或通过其配置变量有针对性地定义精灵;
+
+// <map>:存放精灵的文件名;
+
+// <sprite>:某个单独的精灵图片的名字;
+
+// 以下配置的所有变量需在导入精灵("@include all-Icon-sprites")之前被定义;
+
+1 1.配置精灵图之间的间距
+2 $<map>-spacing:Xpx;                     // 设置所有精灵图之间的间距为Xpx;
+3 $<map>-<sprite>-spacing:Xpx;            // 设置某个精灵图的间距;
+4 Sass:
+5     $Icon-spacing:4px;                  // 所有图片的间距为4px;
+6     $Icon-index1-spacing:12px;          // index1图片的间距为12px;
+
+1 2.设置精灵的重复性
+2 $<map>-repeat:no-repeat/repeat-x;       // 默认值是no-repeat;设置为repeat-x可以使其X轴平铺;
+3 $<map>-<sprite>-repeat:no-repeat/repeat-x;　　// 设置单个图片的重复属性;
+4 Sass:
+5     $Icon-index2-repeat:repeat-x;       // index2图片在精灵图片里边横向平铺;
+
+3.设置精灵的位置
+$<map>-position:Xpx;                      // 垂直向右(水平向下)移动Xpx距离;
+$<map>-<sprite>-position:Xpx;
+Sass:
+    $Icon-positioin: 10px;　　　　　　　　  // 所有图片向右10px;
+
+1 4.设置精灵地图的布局
+2 $<mpa>-layout: vertical(垂直)/horizontal(水平)/diagonal(对角线)/smart(产生最小的空白区域);  // 默认布局是vertical;
+  $Icon-layout:horizontal;　　　　　　　 // 在引入sprites模块之前定义;
+1 5.清除过期的精灵地图
+2 $<map>-clean-up:true/false;
+
+ 6.4.2 自定义精灵的CSS
+
+ 1 1.输出精灵的尺寸
+ 2 $<map>-sprite-height($name);            // 得到某个精灵图片的高度;
+ 3 $<map>-sprite-width($name);
+ 4 $<map>-sprite-dimensions:true/false;    // 为精灵地图中的每个精灵自动输出尺寸;
+ 5 Sass:
+ 6     .next {
+ 7         @include Icon-sprite(index2);
+ 8         width:Icon-sprite-width(index2);// 得到精灵图片的大小;
+ 9     }
+10 CSS:
+11     .next {
+12         background-position: -10px -150px;
+13         width: 140px;　　　　　　　　　　 // 生成的图片大小;
+14     }
+
+ 1 2.精灵的基础类
+ 2 // Compass可以方便地通过生成一个基础类为每个精灵应用普通样式;
+ 3 $<map>-sprite-base-class:".class-name";
+ 4 // 当使用全部精灵或单独精灵的混合器时,Compass会输出一个精灵的基础类;并且其选择器还会串联所有设置了background-image属性的选择器;
+ 5 // 每个精灵地图的基础类都以其文件夹的名字命名;
+ 6 Sass:
+ 7     $Icon-sprite-base-class: ".Icon";
+ 8     .Icon {                             // 设置精灵的CSS基础类;
+ 9         overflow: hidden;
+10         width:Icon-sprite-width(index1);
+11     }
+12 CSS:
+13     .Icon, .Icon-index1, .Icon-index2, .Icon-index3, .Icon-index4, .Icon-index5 {
+14       overflow: hidden;
+15       width: 140px;
+16     }
+
+ 1 3.魔术精灵选择器
+ 2 $disable-magic-sprite-selectors:true/false;
+ 3 // 魔术精灵选择器是默认开启的,也就是说Compass在精灵时会根据以"_hover"/"_active"或"_target"结尾的名字自动输出CSS的:hover/:active和:target伪选择器;
+ 4 // 在Icon文件夹内添加index4_hover.png之后会自动生成关于index-4:hover的类及相关代码;
+ 5 CSS:
+ 6     .Icon-index4 {
+ 7         background-position: 0 -420px;
+ 8     }
+ 9     .Icon-index4:hover, .Icon-index4.index4-hover {
+10         background-position: 0 -560px;
+11     }
+
+ 
+6.5 驾驭精灵辅助器
+ 6.5.1 创建精灵地图
+
+ // 之前的"@import 'Icon/*.png'",不仅创建了一个精灵地图,还为精灵地图和每个精灵设置了混合器和变量;
+
+1 1.sprite-map辅助器
+2 $Icon:sprite-map("Icon/*.png",$layout:smart);   // 它会创建一个智能布局的精灵地图,并把精灵地图的图片URL赋值给$Icon变量;
+
+1 2.sprite-map辅助器--设置单个精灵
+2 $Icon:sprite-map("Icon/*.png",$index2-spacing:5px);
+
+ 6.5.2 撰写精灵的CSS
+
+ // 在Compass为你生成精灵地图之后,仍需要写出每个精灵的CSS;
+
+ 1 1.sprite辅助器
+ 2 sprite($map,$sprite,[$offset-x],[$offset-y]);
+　　// $map:精灵基础类; $sprite:单个图片名,用于定位背景图片;
+ 3 // sprite辅助器需要精灵地图/精灵的名字以及可选的偏移坐标;
+ 4 Sass:
+ 5     $Icon:sprite-map("Icon/*.png",$layout:smart);
+ 6     // 精灵基础类的一个优点就是只需要赋值一次背景图片(把路径复制到变量中);
+ 7     .next {
+ 8         background:sprite($Icon,index2) no-repeat;
+ 9     }
+10 // 这仅仅会输出背景属性,而不会成为一个精灵的基础类或其他任何不需要的CSS;
+11 CSS:
+12     .next {
+13         background: url('/images/Icon-s6558f78e4f.png') 0 -140px no-repeat;
+14     }
+
+ 1 2.设置精灵的位置
+ 2 // 为了移除重复的背景图片,你可以用sprite-position辅助器或sprite-background-position混合器取代sprite辅助器;
+ 3 Sass:
+ 4     $Icon:sprite-map("Icon/*.png");             // 辅助器创建精灵地图;
+ 5     .sprite-base { background:$Icon no-repeat; }// 引入精灵地图;
+ 6     .next {
+ 7         @extend .sprite-base;                   // @extend引用;
+ 8         background-position:sprite-position($Icon, index2); 
+ 9         // 设置background-position属性;
+10         // sprite-position:辅助器,用于定位图片位置;
+11         // $Icon:变量,引入精灵图片路径;
+12         // index2:定位精灵图片index2位置的参数;
+13     }
+14 CSS:
+15     .sprite-base, .next {
+16         background: url('/images/Icon-sb501daeae5.png') no-repeat;
+17     }
+18     .next {
+19         background-position: 0 -140px;
+20     }
+
+ 1 3.设置精灵的尺寸--sprite-dimensisons混合器
+ 2 // 它需要精灵地图和精灵的名字,并输出经过测量的尺寸;
+ 3 Sass:
+ 4     $Icon:sprite-map("Icon/*.png");             // 辅助器创建精灵地图;
+ 5     .sprite-base { background:$Icon no-repeat; }// 引入精灵地图;
+ 6     .add {
+ 7         @extend .sprite-base;
+ 8         @include sprite-background-position($Icon,index3);  // 精灵图片定位辅助器;
+ 9         @include sprite-dimensions($Icon,index3);
+10     }

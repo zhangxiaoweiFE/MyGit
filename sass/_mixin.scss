@@ -1,0 +1,71 @@
+%in-blk{
+	display: inline-block;
+	*display: inline;
+	*zoom:1;
+}
+%center{
+	margin:0 auto;
+}
+%nowrap{
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+	overflow: hidden;
+}
+@mixin size($width:0,$height:0){
+	width:#{$width}px;
+	height:#{$height}px;
+}
+
+@mixin  pos($top:0,$left:0){
+	position:absolute;
+	top:#{$top}px;
+	left:#{$left}px;
+}
+@mixin font($font-size:14,$color:#fff){
+	font-size:#{$font-size}px;
+	color:$color;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin rule($fs,$color,$lineheight,$color-a){
+	li{
+		@include font($fs,$color);
+		text-indent:15px;
+		padding-left: 15px;
+		line-height:$lineheight;
+	}
+	a{
+		color:$color-a;
+	}
+}
+
+@mixin tri($arrow,$w,$h,$col){
+	@include size(0,0);
+	overflow:hidden;
+	@if $arrow=='down'{
+		border-width: $w $h;
+		border-style: solid dashed dashed dashed;
+		border-color: $col transparent transparent transparent;
+	}
+	@else if $arrow=="right"{
+		border-width: $w $h;
+		border-style: dashed dashed dashed solid;
+		border-color: transparent transparent transparent $col;
+	}
+	@else if $arrow=="up"{
+		border-width: $w $h;
+		border-style: dashed dashed solid dashed;
+		border-color: transparent transparent $col transparent;
+	}
+	@else if $arrow=="left"{
+		border-width: $w $h;
+		border-style: dashed solid dashed dashed;
+		border-color: transparent $col transparent transparent;
+	}
+}
+

@@ -1,0 +1,14 @@
+/* sprite */
+$spr-layout: vertical;                      
+$spr-sprite-dimensions: true; 
+$spr-spacing: 10px;
+$spr-sprite-base-class: ".spr";
+
+
+@import "compass/utilities/sprites";   
+@import "spr/*.png";
+
+
+
+
+
