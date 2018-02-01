@@ -1,0 +1,73 @@
+.hide-txt{text-indent:-9999em;font-size:0;line-height:0;}
+.clearfix:after{display:block;content:"";visibility:hidden;clear:both;height:0;}
+
+.btn-exp,.close-exp,.pop-exp .star,.switch .coin,.switch .coin-exp,.switch .arrows,.pop-txt-exp{background-image:url('../img/spr-exp.png');background-size:8.704rem 12.94933rem;background-repeat:no-repeat;}
+.btn-exp{width:8.68267rem;height:2.34667rem;background-position:0% 51.91147%;}
+.close-exp{width:1.19467rem;height:1.19467rem;background-position:0% 24.6824%;}
+.pop-exp .star{width:0.576rem;height:0.98133rem;background-position:0% 36.00713%;}
+.switch .coin{width:1.23733rem;height:1.23733rem;background-position:0% 0%;}
+.switch .coin-exp{width:1.23733rem;height:1.23733rem;background-position:0% 12.38616%;}
+.switch .arrows{width:1.68533rem;height:1.30133rem;background-position:0% 69.23077%;}
+.pop-txt-exp{width:8.704rem;height:3.37067rem;background-position:0% 100%;}
+
+.pop-lay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index:101;overflow:hidden;}
+.pop-exp{position:absolute;top:50%;left:0;right:0;width:100%;-webkit-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0);}
+.pop-exp.diff{top:0;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
+.pop-exp-cont{width:13.65rem;height:17.472rem;margin:0 auto;background:url(../img/bg-exp.png) no-repeat;background-size:100% 100%;}
+.pop-exp-cont.pc{background:url(../img/bg-exppc.png) no-repeat;background-size:100% 100%;}
+.pop-exp .btn-exp{display:block;margin:0 auto;font-size:1.075rem;color:#fd1355;font-weight:bold;line-height:2.25rem;text-align:center;text-decoration: none;}
+.pop-exp .close-exp{position:absolute;top:2.875rem;right:3rem;}
+.pop-exp .exp-win{width:12.05rem;height:13.74rem;margin:0 auto 1rem;background:url(../img/bg-exp-win.png) no-repeat;background-size:100%;position:relative;}
+.pop-exp .pc-exp-win{width:12.05rem;height:13.74rem;margin:0 auto 1rem;background:url(../img/bg-exppc-win.png) no-repeat;background-size:100%;position:relative;}
+.pop-exp .exp-win .star{position:absolute;top:1.95rem;left:5.25rem;}
+.pop-exp .exp-win .star:nth-of-type(2){top:3.625rem;left:3.125rem;-webkit-transform:scale(0.6);transform:scale(0.6);}
+.pop-exp .exp-win .star:nth-of-type(3){top:3.5rem;left:8.5rem;-webkit-transform:scale(0.6);transform:scale(0.6);}
+.pop-exp .exp-fail{width:8.725rem;height:13.74rem;margin:0 auto 1rem;background:url(../img/bg-exp-fail.png) no-repeat;background-size:100%;position:relative;}
+.pop-exp .pc-exp-fail{width:8.725rem;height:13.74rem;margin:0 auto 1rem;background:url(../img/bg-exppc-fail.png) no-repeat;background-size:100%;position:relative;}
+.pop-box-exp{width:16rem;height:100%;margin:0 auto;}
+.pop-bg-exp{width:16rem;height:2.925rem;background:url(../img/pop-bg-exp.jpg) no-repeat;background-size:100%;}
+.pop-mgdz .bg-exp{width:16rem;height:2.225rem;background:url(../img/bg-exp-mgdz.jpg) no-repeat;background-size:100%;}
+.pop-guess .bg-exp{width:16rem;height:2.225rem;background:url(../img/bg-exp-lucky.jpg) no-repeat;background-size:100%;}
+.pop-txt-exp{margin:-0.375rem auto 0 1.5rem;}
+.total .switch{display:inline-block;vertical-align:top;width:1.75rem;height:1.42933rem;position:relative;}
+.total .switch .coin,.total .switch .coin-exp{position:absolute;top:50%;left:0rem;-webkit-transform:translate3d(0,-50%,0);transform:translate3d(0,-50%,0);-webkit-transition:all 0.3s;transition:all 0.3s;z-index:2;}
+.total .switch .small{left:0.35rem;z-index:1;-webkit-transform:translate3d(0,-50%,0) scale(0.9);transform:translate3d(0,-50%,0) scale(0.9);}
+.total .switch .arrows{position:absolute;top:0;left:-0.15rem;z-index:5;}
+.total.fc-blue{color:#BFC2FF;}
+
+.wrap .total .switch{position:absolute;top:-0.2rem;left:-0.5rem;}
+.wrap.exp .sec-bet .coin78,.wrap.exp .sec-goods .btn-exchange .coin32{background:url(../img/coinexp.png);background-size:100% 100%;}
+
+
+/*animation*/
+.total .switch .scales{-webkit-animation:scales 0.3s both;animation:scales 0.3s both;}
+.total .shake{-webkit-animation:shake 2s both infinite;animation:shake 2s both infinite;}
+.pop-exp .star{-webkit-animation:lighting 0.3s linear both infinite alternate;animation:lighting 0.3s linear both infinite alternate;}
+.pop-exp .star:nth-of-type(2){-webkit-animation-delay:0.15s;animation-delay:0.15s;}
+.pop-exp .star:nth-of-type(3){-webkit-animation-delay:0.3s;animation-delay:0.3s;}
+@-webkit-keyframes scales{
+  0%,100%{-webkit-transform:scale(1);}
+  50%{-webkit-transform:scale(1.2);}
+}
+@keyframes scales{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+}
+@-webkit-keyframes shake{
+  0%,25%,100%{-webkit-transform:translate3d(0,0,0);}
+  5%,15%{-webkit-transform:translate3d(0,-2px,0);}
+  10%,20%{-webkit-transform:translate3d(0,2px,0);}
+}
+@keyframes shake{
+  0%,25%,100%{transform:translate3d(0,0,0);}
+  5%,15%{transform:translate3d(0,-2px,0);}
+  10%,20%{transform:translate3d(0,2px,0);}
+}
+@-webkit-keyframes lighting{
+  0%{opacity:0.3;}
+  100%{opacity:1;}
+}
+@keyframes lighting{
+  0%{opacity:0.3;}
+  100%{opacity:1;}
+}

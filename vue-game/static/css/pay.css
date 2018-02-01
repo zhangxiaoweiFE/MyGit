@@ -1,0 +1,194 @@
+/***
+ @author ----- zhangxiaowei
+ @design ----- huangliyun
+ @time   ----- 2017-06-07
+***/
+
+/* sprite */
+.icon-pay{background-image:url('../img/icon-pay.png');background-size:3.775rem 15.65rem;background-repeat:no-repeat;}
+.icon-pay-ck{width:0.45rem;height:0.375rem;background-position:0% 0%;}
+.icon-pay-back{width:0.725rem;height:0.6rem;background-position:0% 4.15282%;}
+.icon-pay-selt{width:1.275rem;height:1.225rem;background-position:0% 10.2253%;}
+.icon-pay-wx{width:3.075rem;height:1rem;background-position:0% 20.13652%;}
+.icon-pay-alipay{width:3.775rem;height:0.925rem;background-position:0% 37.01188%;}
+.icon-pay-success{width:2.7rem;height:2.7rem;background-position:0% 60.23166%;}
+.icon-pay-fail{width:2.7rem;height:2.7rem;background-position:0% 83.01158%;}
+.icon-pay-tag{width:1.7rem;height:1.95rem;background-position:0% 100%;}
+.pop-get h3,.pop-get .item-way{background-image:url('../img/spr-get.png');background-size:16rem 19.775rem;background-repeat:no-repeat;}
+.pop-get h3{width:16rem;height:3.875rem;background-position:0% 0%;}
+.pop-get .item-way{width:15.05rem;height:5.05rem;background-position:0% 28.01358%;}
+.pop-get .item-way:nth-of-type(2){width:15.05rem;height:5.05rem;background-position:0% 64.00679%;}
+.pop-get .item-way:nth-of-type(3){width:15.05rem;height:5.05rem;background-position:0% 100%;}
+.coin{display:inline-block;background:url(../img/coin.png) no-repeat;background-size:100% 100%;}
+.coin56{width:1.425rem;height:1.425rem;}
+.coin78{width:1.95rem;height:2.025rem;}
+.coin32{width:0.8rem;height:0.8rem;}
+.coin20{width:0.5rem;height:0.5rem;}
+em,i{font-style:normal;}
+.hide-txt{text-indent:-9999em;font-size:0;line-height:0;}
+
+/* sprite */
+.pop-lay .pop-agreement .icon-close{background-image:url("../img/spr-icon-pay.png");background-size:0.9rem 6.95rem;background-repeat:no-repeat;width:0.7rem;height:0.7rem;background-position:0% 87.2%;}
+
+/* pop */
+.pop-lay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index:101;overflow-y:auto;}
+.pop-get{position:absolute;bottom:0;left:0;right:0;height:20.5rem;margin:auto;background:#fff;overflow:hidden;}
+.pop-get h3{margin:0 auto;}
+.pop-get .list-ways{width:16rem;height:16.65rem;margin:0 auto;overflow:auto;}
+.pop-get .item-way{margin:0 auto 0.5rem;position:relative;}
+.pop-get .item-way a{position:absolute;top:1rem;right:0.75rem;font-size:0.5rem;color:#008ded;text-align:right;text-decoration:none;line-height:1.2;}
+.pop-get .item-way a span{display:block;font-size:0.925rem;}
+.pop-get .item-way p{position:absolute;right:0.75rem;bottom:0.25rem;font-size:0.35rem;color:#58bffb;}
+.pop-pay{position:absolute;left:0;right:0;bottom:0;padding:0.75rem 0.5rem 0;font-size:0.6rem;color:#426388;background:#fff;}
+.pop-pay .wave-wp{position:absolute;top:-0.7rem;left:0;width:100%;height:0.75rem;overflow:hidden;}
+.pop-pay .wave1,.pop-pay .wave2,.pop-pay .wave3{position:absolute;bottom:0;left:0;width:100%;height:0.75rem;background:url(../img/wave1.png) repeat-x top left;background-size:16rem auto;}
+.pop-pay .wave2{background:url(../img/wave2.png) repeat-x top left;background-size:16rem auto;}
+.pop-pay .wave3{background:url(../img/wave3.png) repeat-x top left;background-size:16rem auto;}
+.pop-pay .back{position:absolute;top:0rem;left:0.5rem;padding:0.3rem 1.25rem 1.25rem 0;}
+.pop-pay .back .icon-pay-back{display:block;}
+.pop-pay h3{text-align:center;font-size:0.8rem;color:#21b4fd;overflow:hidden;}
+.pop-pay h3 span{padding:0 0.5rem;position:relative;}
+.pop-pay h3 span:before,.pop-pay h3 span:after{content:"";position:absolute;top:50%;width:16rem;height:1px;background:#21b4fd;}
+.pop-pay h3 span:before{left:100%;}
+.pop-pay h3 span:after{right:100%;}
+.pop-pay .pay-amount{padding-bottom:0.5rem;margin:0.75rem auto;border-bottom:1px dashed #E2E3E5;}
+.pop-pay .pay-amount p{margin-bottom:0.5rem;position:relative;}
+.pop-pay .pay-amount p:last-of-type{font-size:0.55rem;color:#21b4fd;line-height:0.5rem;}
+.pop-pay .pay-amount p:last-of-type span{color:#21b4fd;}
+.pop-pay .pay-amount p .more{position:absolute;right:0;top:0.075rem;color:#21b4fd;}
+.pop-pay .pay-amount span:not(:first-child){color:#feb506;}
+.pop-pay .pay-amount strong{font-size:0.75rem;color:#ff7e00;font-weight:normal;}
+.pop-pay .ckbox{display:inline-block;vertical-align:middle;width:0.75rem;height:0.75rem;border:1px solid #21B4FD;margin:-0.05rem 0.25rem 0 0;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:0.1rem;}
+.pop-pay .ckbox i{display:none;margin:0.175rem auto;}
+.pop-pay .ckbox.on{background:#21B4FD;}
+.pop-pay .ckbox.on i{display:block;}
+.pop-pay .pay-way{padding-bottom:0.75rem;}
+.pop-pay .pay-way .btn-recharge{display:block;width:15rem;height:2rem;margin:0 auto 0.875rem;line-height:2rem;font-size:0.8rem;color:#C36918;font-weight:bold;text-align:center;text-decoration:none;background:#F7E94F;border-radius:0.2rem;-webkit-box-shadow:0 0.1rem 0 #d3b115;box-shadow:0 0.1rem 0 #d3b115;}
+.pop-pay .pay-way p:last-child{font-size:0.55rem;color:#21b4fd;line-height:0.5rem;}
+.pop-pay .pay-way p:last-child a{color:#21b4fd;text-decoration:none;}
+.pop-pay .pay-btn-wp{margin:0.875rem auto 1.25rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+.pop-pay .pay-btn-wp .icon-pay-selt{display:none;position:absolute;right:0;bottom:0;}
+.pop-pay .pay-btn-wp a{width:6.75rem;height:2.25rem;border:1px solid #CBC8C8;border-radius:0.25rem;-webkit-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;position:relative;overflow:hidden;}
+.pop-pay .pay-btn-wp a.on{background:#1DAA1A;border:none;}
+.pop-pay .pay-btn-wp a.on .icon-pay-wx{width:3.075rem;height:1rem;background-position:0% 28.66894%;}
+.pop-pay .pay-btn-wp a.on .icon-pay-alipay{width:3.775rem;height:0.925rem;background-position:0% 44.99151%;}
+.pop-pay .pay-btn-wp a.on .icon-pay-selt{display:block;}
+.pop-pay .pay-btn-wp a:first-of-type.on{background:#00A1EE;}
+.pop-pay .pay-info{margin:0.5rem auto;font-size:0.7rem;color:#847573;}
+.pop-pay .pay-info div{position:relative;}
+.pop-pay .pay-info p{position:relative;}
+.pop-pay .pay-info p span:last-of-type{color:#feb506;}
+.pop-pay .pay-info .links{position:absolute;right:-0.25rem;top:0;font-size:0;}
+.pop-pay .pay-info .links a{padding:0 0.25rem;color:#21b4fd;font-size:0.7rem;text-decoration:none;}
+.pop-pay .pay-info .links a:not(:last-of-type){border-right:1px solid #21b4fd;}
+.pop-pay .pay-info .exp span:last-of-type{color:#aeb2ff;}
+.pop-pay .pay-info .tips-exp{display:block;font-size:0.5rem;color:#a6a2a1;}
+.pop-pay .voucher-list-wp{width:100%;height:13.375rem;overflow:hidden;}
+.pop-pay .voucher-list{width:100%;height:100%;overflow:auto;}
+.pop-pay .voucher{width:14.95rem;height:3.5rem;margin:0 auto 0.3rem;background-image:url(../img/voucher.png);background-repeat:no-repeat;background-size:contain;position:relative;}
+.pop-pay .voucher .sum{float:left;width:4.5rem;height:100%;line-height:3.5rem;font-size:0.8rem;color:#f4fcff;text-align:center;overflow:hidden;}
+.pop-pay .voucher .sum span{font-size:2rem;}
+.pop-pay .voucher .icon-pay-tag{position:absolute;top:0;right:0;}
+.pop-pay .voucher-info{height:100%;padding-left:0.75rem;font-size:0.5rem;color:#baa29f;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;overflow:hidden;}
+.pop-pay .voucher-info p{white-space:nowrap;overflow:hidden;}
+.pop-pay .voucher-info p:first-of-type{font-size:0.6rem;color:#847573;}
+.pop-pay .voucher-info p:last-of-type{font-size:0.6rem;color:#feb506;}
+.pop-pay .voucher-info p:last-of-type span{color:#f5c936;}
+.pop-pay .voucher-info p:last-of-type em{color:#baa29f;}
+.pop-pay .voucher-info p span{vertical-align:middle;}
+.pop-pay .voucher-info p strong{font-weight:normal;color:#ff5c30;}
+.pop-pay .voucher-info .coin20{vertical-align:middle;margin:-0.05rem 0.125rem 0;}
+.pop-lay .pop-agreement{position:fixed;top:50%;left:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);z-index:11;width:13.654rem;height:19.52rem;background:#fff;border-radius:10px;font-size:0.597rem;color:#126d9f;line-height:1.024rem;}
+.pop-lay .pop-agreement h3{margin:0.875rem auto;font-size:0.75rem;color:#1680ba;text-align:center;}
+.pop-lay .pop-agreement p{margin-bottom:0.427rem;}
+.pop-lay .pop-agreement .icon-close{position:absolute;top:0.75rem;right:0.75rem;}
+.pop-lay .pop-agreement-cont{width:11.947rem;height:16.25rem;padding:0 0.854rem;overflow:auto;text-align:justify;}
+.pop-lay .pop-agreement-cont li{text-indent:-0.7rem;padding-left:0.7rem;}
+.pop-lay .pop-agreement-cont dl,.pop-lay .pop-agreement-cont dd{margin:0;text-align:justify;}
+.pop-pay-res{position:absolute;left:0;right:0;bottom:0;padding:2rem 0 1.25rem;background:#fff;border-top:0.1rem solid #21B4FD;font-size:0.8rem;color:#21b4fd;text-align:center;}
+.pop-pay-res .icon-pay{display:block;margin:0 auto 0.5rem;}
+.pop-pay-res .pay-res{margin-bottom:1.875rem;}
+.pop-pay-res .pay-res span{display:block;font-size:0.5rem;}
+.pop-pay-res .btn-res{display:block;width:14.5rem;height:2rem;margin:0 auto;line-height:2rem;font-size:0.8rem;color:#C36918;font-weight:bold;text-align:center;text-decoration:none;background:#F7E94F;border-radius:0.2rem;-webkit-box-shadow:0 0.1rem 0 #d3b115;box-shadow:0 0.1rem 0 #d3b115;}
+.pop-pay-res.fail{border-color:#FF7624;color:#ff7624;}
+.pop-tips{position:absolute;top:50%;left:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);font-size:0.7rem;color:#fff;padding:0.625rem;background:rgba(0,0,0,0.6);border-radius:0.375rem;white-space:nowrap;max-width:11.5rem;text-align:center;}
+
+/* animation */
+.pop-pay .wave1,.pop-pay .wave2{-webkit-animation:wavesani 5s both linear infinite;animation:wavesani 5s both linear infinite;}
+.pop-pay .wave2{-webkit-animation-delay:1s;animation-delay:1s;}
+@-webkit-keyframes wavesani{
+  0%{background-position:0 0;}
+  100%{background-position:-16rem 0;}
+}
+@keyframes wavesani{
+  0%{background-position:0 0;}
+  100%{background-position:-16rem 0;}
+}
+
+/*media*/
+@media (min-width:1081px) and (max-width:1920px){
+  html,body,input,button{font-size:40px;}
+}
+@media (min-width:1025px) and (max-width:1080px){
+  html,body,input,button{font-size:40px;}
+}
+@media (min-width:961px) and (max-width:1024px){
+  html,body,input,button{font-size:40px;}
+}
+@media (min-width:801px) and (max-width:960px){
+  html,body,input,button{font-size:60px;}
+}
+@media (min-width:770px) and (max-width:800px){
+  html,body,input,button{font-size:50px;}
+}
+@media (min-width:751px) and (max-width:769px){
+  html,body,input,button{font-size:48px;}
+}
+@media (min-width:721px) and (max-width:750px){
+  html,body,input,button{font-size:46.875px;}
+}
+@media (min-width:641px) and (max-width:720px){
+  html,body,input,button{font-size:45px;}
+}
+@media (max-width:640px){
+  html,body,input,button{font-size:40px;}
+}
+@media (max-width:600px){
+  html,body,input,button{font-size:37.5px;}
+}
+@media (max-width:540px){
+  html,body,input,button{font-size:33.75px;}
+}
+@media (max-width:500px){
+  html,body,input,button{font-size:31.25px;}
+}
+@media (max-width:480px){
+  html,body,input,button{font-size:30px;}
+}
+@media (width:435px){
+  html,body,input,button{font-size:27.1875px;}
+}
+@media (width:432px){
+  html,body,input,button{font-size:27px;}
+}
+@media (max-width:414px){
+  html,body,input,button{font-size:25.875px;}
+}
+@media (max-width:400px){
+  html,body,input,button{font-size:25px;}
+}
+@media (width:393px){
+  html,body,input,button{font-size:24.5625px;}
+}
+@media (max-width:384px){
+  html,body,input,button{font-size:24px;}
+}
+@media (max-width:375px){
+  html,body,input,button{font-size:23.4375px;}
+}
+@media (max-width:360px){
+  html,body,input,button{font-size:22.5px;}
+}
+@media (max-width:320px){
+  html,body,input,button{font-size:20px;}
+}
