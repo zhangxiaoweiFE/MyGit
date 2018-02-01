@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="particle.js"></script>
+</head>
+<body style="background:#000; overflow:hidden;">
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+    <script>
+        var particleCanvas = new particleCanvas("canvas", [{
+            "type": {"typeName": "image", "url": "./light.png"},
+            "number": 100,
+            "area": {"leftTop": [1820, 0], "rightBottom": [1920, 500]},
+            "op": {"min": 0.3, "max": 1},
+            "size": {"min": 5, "max": 10},
+            "zoom": {"min": 0.1, "max": 1},
+            "speed": {"min": 1, "max": 3},
+            "angle": {"value": 175, "float": 30},
+            "rota": {"value": 30, "speed": 3, "floatValue": 120, "floatSpeed": 2},
+            "reIn": "init",
+            "delayFill":{initNumber:5,fixed:30,oneTimesNumber:2}
+        }]);
+    </script>
+</body>
+</html>
