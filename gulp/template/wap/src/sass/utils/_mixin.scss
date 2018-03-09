@@ -1,0 +1,100 @@
+@function rem($px){
+	$rem:($px/100) * 1rem;
+	@return $rem;
+}
+
+@mixin vw($psdSize,$baseFont){
+	font-size:calc(100vw / $psdSize * $baseFont);
+}
+
+%ellipsis{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+@mixin center($position:absolute){
+	position:$position;
+	top:50%;
+	left:50%;
+	transform:translate3d(-50%,-50%,0);
+}
+
+
+@mixin size($width:0,$height:0){
+	width:rem($width);
+	height:rem($height);
+}
+
+@mixin pos($top:0,$left:0){
+	position:absolute;
+	top:rem($top);
+	left:rem($left);
+}
+@mixin posr($top:0,$right:0){
+    position:absolute;
+    top:rem($top);
+    right:rem($right);
+}
+
+@mixin bg($url){
+	background:url(../img/#{$url}) no-repeat center top;
+	background-size:100% 100%;
+}
+
+@mixin font($font-size:14,$color:#fff){
+	font-size:rem($font-size);
+	color:$color;
+}
+
+
+@function px2rem ($px) {
+    @if (type-of($px) == "number") {
+        @return $px / 100px * 1rem;
+    }
+
+    @if (type-of($px) == "list") {
+        @if (nth($px, 1) == 0 and nth($px, 2) != 0) {
+            @return 0 nth($px, 2) / 100px * 1rem;
+        } @else if (nth($px, 1) == 0 and nth($px, 2) == 0)  {
+            @return 0 0;
+        } @else if (nth($px, 1) != 0 and nth($px, 2) == 0) {
+            @return nth($px, 1) / 100px * 1rem 0;
+        } @else {
+            @return nth($px, 1) / 100px *1rem nth($px, 2) / 100px * 1rem;
+        }
+    }
+}
+@function px2percent ($px,$icons,$name,$W,$H) {
+    $width: image-width(sprite-file($icons, $name));
+    $height: image-height(sprite-file($icons, $name));
+
+    @if (type-of($px) == "number") {
+        @return $px / $W * -100%;
+    }
+
+    @if (type-of($px) == "list") {
+        @if (nth($px, 1) == 0 and nth($px, 2) != 0) {
+            @return 0% nth($px, 2) / ($H - $height) *-100%;
+        } @else if (nth($px, 1) == 0 and nth($px, 2) == 0)  {
+            @return 0% 0%;
+        } @else if (nth($px, 1) != 0 and nth($px, 2) == 0) {
+            @return nth($px, 1) / ($W - $width)*-100% 0%;
+        } @else {
+            @return nth($px, 1) / ($W - $height) *-100% nth($px, 2) / ($H - $height) *-100%;
+        }
+    }
+}
+
+
+@mixin sprite-info ($icons, $name) {
+    width: px2rem(image-width(sprite-file($icons, $name)));
+    height: px2rem(image-height(sprite-file($icons, $name)));
+    background-position: px2rem(sprite-position($icons, $name));
+}
+// percent
+@mixin spr-info ($icons, $name, $W, $H) {
+    width: px2rem(image-width(sprite-file($icons, $name)));
+    height: px2rem(image-height(sprite-file($icons, $name)));
+    background-position: px2percent(sprite-position($icons, $name),$icons,$name,$W,$H);
+}

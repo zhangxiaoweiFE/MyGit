@@ -1,0 +1,42 @@
+/*
+* @Author: lungin
+* @Date:   2017-06-22 09:41:20
+* @Last Modified by:   lungin
+* @Last Modified time: 2017-06-22 10:27:48
+*/
+/* media query */
+/* for 1080+ px width screen */
+@media only screen and (min-width:1081px){
+html{margin: 0 auto; width: 640px; font-size: 20px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 1080 px width screen */
+@media only screen and (width:1080px){
+html{font-size: 34px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 720 px width screen */
+@media only screen and (min-width:720px) and (max-width: 1079px){
+html{font-size: 22.5px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 414 px width screen */
+@media only screen and (min-width:414px) and (max-width: 719px){
+html{font-size: 13px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 375 px width screen */
+@media only screen and (min-width:375px) and (max-width: 413px){
+html{font-size: 12px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 360 px width screen */
+@media only screen and (min-width:360px) and (max-width: 374px){
+html{font-size: 11px;}
+.xl_wrap{zoom: 1;}
+}
+/* for 320 px width screen */
+@media only screen and (max-width: 359px){
+html{font-size: 10px;}
+.xl_wrap{zoom: 1;}
+}

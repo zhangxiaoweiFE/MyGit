@@ -1,0 +1,51 @@
+﻿@import  "utils/_mixin";
+
+:root:before {
+	content: "author:zhangxiaowei;design:zhengying;update:20170825;";
+	display: none
+}
+
+.main a,.main a:hover{outline:none;text-decoration:none;color:#fff;}
+.hide-txt{text-indent:-9999em;font-size:0;line-height:0;}
+.clearfix:after{display:block;content:"";visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+input::-webkit-input-placeholder{color:#ffb710;}
+// @import  "_spr";
+
+
+/*main*/
+$bgColor:#fff;
+$color:#000;
+
+.wrap{
+	width: 100%;
+	min-width:1200px;
+	font-family: "Microsoft YaHei";
+	background: $bgColor url(../img/bg.jpg) no-repeat center top;
+	overflow:hidden;
+}
+
+.main{
+	width:1200px;
+	margin:0 auto;
+	background: $bgColor;
+	background:$bgColor url(../img/main.jpg) no-repeat center top;
+	@include font(16,$color);
+	text-align:center;
+	position:relative;
+}
+
+
+@import "_main";
+
+
+.sys_footer{min-width:990px;background:$bgColor;}
+.sys_footer .foot{border-top: 1px solid #8b45e9; color: #a769fa !important;}
+.sys_footer .foot,.sys_footer .foot a{color: #a769fa !important;}
+
+@import "_pop";
+
+@import "_ani";
+
+
+@import "_vipicon";

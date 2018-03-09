@@ -1,0 +1,36 @@
+/* for 1080+ px width screen */
+@media only screen and (min-width: 720px){
+	.wrap, .pop_wp { margin: 0 auto; zoom: 2.25; }
+}
+/* for 720 px width screen */
+@media only screen and (max-width:720px) {
+	.wrap, .pop_wp { zoom: 2.25; }
+}
+/* for 640 px width screen */
+@media only screen and (max-width:640px) {
+	.wrap, .pop_wp { zoom: 2; }
+}
+/* for 540 px width screen */
+@media only screen and (max-width:540px) {
+	.wrap, .pop_wp { zoom: 1.69; }
+} 
+/* for 480 px width screen */
+@media only screen and (max-width:480px) {
+	.wrap, .pop_wp { zoom: 1.5; }
+}
+/* for 450 px width screen */
+@media only screen and (max-width:450px) {
+	.wrap, .pop_wp { zoom: 1.4; }
+}
+/* for 414 px width screen */
+@media only screen and (max-width:414px) {
+	.wrap, .pop_wp { zoom: 1.29; }
+}
+/* for 375 px width screen */
+@media only screen and (max-width:375px) {
+	.wrap, .pop_wp { zoom: 1.17; }
+}
+/* for 320 px width screen */
+@media only screen and (max-width:320px) {
+	.wrap, .pop_wp { zoom: 1; }
+}

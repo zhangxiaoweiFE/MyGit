@@ -1,0 +1,43 @@
+﻿@import  "utils/_mixin";
+
+:root:before {
+	content: "author:zhangxiaowei;design:zhengying;update:20170830;";
+	display: none;
+}
+/*base*/
+.hide-txt{text-indent:-9999em;font-size:0;line-height:0;} 
+input::-webkit-input-placeholder{color:#ffb710;}
+$bgColor:#fff;
+$psd:640;
+
+@import  "_spr";
+
+/*main*/
+html{font-size:100/$psd *100vw;font-family:"PingfangSC";}
+html,body,.wrap{width:100%;height:100%;background:$bgColor;}
+.main {
+	width: 100%;
+	min-height: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	background: $bgColor url(../img/bg.jpg) no-repeat;
+	background-size: 100%;
+	@include font(24, #fff);
+	line-height: 1;
+	text-align: center;
+	overflow: hidden;
+}
+
+@import "_main";
+
+/*pop*/
+@import "_pop";
+
+/*animation*/
+@import "_ani";
+
+
+
+
+
+

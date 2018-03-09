@@ -1,0 +1,16 @@
+@import "compass/utilities/sprites";
+
+/*spr*/
+$spr: sprite-map("spr/*.png", $spacing: 10px, $layout: vertical);
+
+$sprWidth:447px;
+$sprHeight:2223px;
+
+.spr{
+    background-image: sprite-url($spr);
+    background-size: px2rem($sprWidth) px2rem($sprHeight);
+    background-repeat: no-repeat;
+}
+.spr{
+    @include spr-info($spr,spr-name,$sprWidth,$sprHeight);
+}
